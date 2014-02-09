@@ -1,0 +1,49 @@
+<head>
+  <title>makelunch</title>
+</head>
+
+<body>
+  <header>
+    {{loginButtons align="right"}}
+    <!-- <h1>JAIL make you lunch</h1> -->
+    <img src="http://jailmake.com/wp-content/themes/jail_2_2/img/jail_header_140_type.png">
+  </header>
+
+  {{> today}}
+  
+  {{> deck}}
+</body>
+
+<template name="deck">
+  <div class="deck">
+    {{#each eater}}
+    <div class="card {{#if eating}}eating{{/if}}">
+      <h1>{{name}}</h1>
+      <div class="photoFrame">
+        <img src="{{img}}">
+      </div>
+      <ul class="stats">
+        <li>
+          <label>Servings</label>
+          <span>{{servings.given}} : {{servings.received}}</span>
+        </li>
+        <li>
+          <label>Last ate</label>
+          <span>{{lastAte}}</span>
+        </li>
+        <li>
+          <label>Cooked</label>
+          <span>{{lastCooked}}</span>
+        </li>
+        <li>{{_id}}</li>
+      </ul>
+    </div>
+    {{/each}}
+  </div>
+</template>
+
+<template name="today">
+  {{#with meal}}
+  <h1>{{humanDateFormat date}} - {{whoIsChef.name}}</h1>
+  {{/with}}
+</template>
