@@ -35,7 +35,7 @@ Meteor.startup(function () {
       ],
       data: function () {
         return {
-          meals: Meals.find().fetch()
+          meals: Meals.find({}, {sort: {date: -1}}).fetch()
         }
       }
     })
