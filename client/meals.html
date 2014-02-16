@@ -1,0 +1,35 @@
+<template name="meals">
+  <h1>Meals</h1>
+  <table class="pure-table pure-table-horizontal">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Chef</th>
+        <th>Cooked</th>
+        <th>For</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each meals}}
+    <tr>
+      <td>{{date}}</td>
+      <td>
+      {{#each chef}}
+        {{#with profile this}}
+          {{> photoFrame}}
+        {{/with}}
+      {{/each}}
+      </td>
+      <td>{{dish}}</td>
+      <td>
+      {{#each eaters}}
+        {{#with profile this}}
+          {{> photoFrame}}
+        {{/with}}
+      {{/each}}        
+      </td>
+    </tr>
+    {{/each}}
+    </tbody>
+  </table>
+</template>

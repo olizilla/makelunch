@@ -14,9 +14,7 @@
     {{#each people}}
     <div class="card {{#if eating}}eating{{/if}}">
       <h1>{{name}}</h1>
-      <div class="photoFrame">
-        <img src="{{img}}">
-      </div>
+      {{> photoFrame this}}
       <ul class="stats">
         <li>
           <label>Servings</label>

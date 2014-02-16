@@ -1,5 +1,4 @@
 Meteor.subscribe('eaters')
-Meteor.subscribe('meals')
 
 Meteor.startup(function () {
 
@@ -27,12 +26,30 @@ Meteor.startup(function () {
 
     this.route('addperson')
 
+    this.route('meals', {
+      path:'/meals',
+      before: [
+        function () {
+          this.subscribe('meals')
+        }
+      ],
+      data: function () {
+        return {
+          meals: Meals.find().fetch()
+        }
+      }
+    })
+
   })// end router.map
 
 })// end Meteor.startup
 
 Handlebars.registerHelper('fromNow', function (date) {
   return moment(date, 'YYYY-MM-DD').fromNow()
+})
+
+Handlebars.registerHelper('profile', function (userId) {
+  return Eaters.findOne(userId)
 })
 
 function whoShouldCook() {

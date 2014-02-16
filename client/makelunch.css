@@ -1,6 +1,7 @@
 @font-face {
-    font-family: JAILcopy;
-    src: url(http://jailmake.com/wp-content/themes/jail_2_2/JAILcopy.ttf);
+  /*http://jailmake.com/wp-content/themes/jail_2_2/JAILcopy.ttf*/
+  font-family: JAILcopy;
+  src: url(/JAILcopy.ttf);
 }
 
 body {
@@ -36,15 +37,26 @@ header h1 img {
   margin: 0;
   padding:4px 0;
 }
-.card .photoFrame {
+.photoFrame {
+  display: inline-block;
   width:250px;
   height:250px;
   overflow: hidden;
   margin-bottom: 7px;
+  vertical-align: middle;
 }
-.card .photoFrame img{
+.photoFrame img{
   min-width: 250px;
   max-width: 400px;
+}
+table .photoFrame{
+  width:80px;
+  height:80px;
+  margin-bottom: 0;
+}
+table .photoFrame img{
+  min-width: 80px;
+  max-width: 128px;
 }
 .card .stats{
   background: white;
