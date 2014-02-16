@@ -16,6 +16,9 @@ header h1{
   color: white;
   margin:0;
 }
+header h1 img {
+  vertical-align: -22px;
+}
 .card {
   background: rgb(24,49,96);
   color: white;
@@ -24,10 +27,10 @@ header h1{
   margin: 0 4px 10px 0;
   border:solid 1px #333;
   /*box-shadow: 2px 2px 10px rgba(0,0,0,0.2);*/
-  opacity: 0.5;
+  opacity: 1;
 }
-.card.eating{
-  opacity: 1; 
+.card.out{
+  opacity: 0.5;
 }
 .card h1{
   margin: 0;
@@ -41,6 +44,7 @@ header h1{
 }
 .card .photoFrame img{
   min-width: 250px;
+  max-width: 400px;
 }
 .card .stats{
   background: white;
@@ -57,7 +61,10 @@ header h1{
   background: #EEE;
 }
 .card .stats label{
-  padding-right: 10px;
+  padding-right: 12px;
+  min-width: 80px;
+  display: inline-block;
+  text-align: right;
 }
 .card .stats span{
   font-weight: 600;
@@ -65,4 +72,68 @@ header h1{
 
 .login-buttons-dropdown-align-right{
   float:right;
+}
+.form-group{
+  margin:2em 0;
+}
+.form-group label {
+  font-size: 2em;
+  margin: 0 0 4px;
+  display: block;
+}
+.form-control{
+  display: block;
+  width: 90%;
+  max-width: 500px;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+input[type="text"].form-control,
+input[type="url"].form-control,
+input[type="number"].form-control,
+input[type="date"].form-control{
+  padding:1px 10px;
+}
+.form-control.mealEaters,
+.form-control.mealChef{
+  height:10em;
+}
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.form-group.guests,
+.form-group.date {
+  display: inline-block;
+  width:49%;
+  margin: 0;
+  max-width: 240px; 
 }

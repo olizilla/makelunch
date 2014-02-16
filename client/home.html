@@ -1,0 +1,41 @@
+<template name="home">
+
+  <h1>{{> today}}</h1>
+
+  {{> deck}}
+</template>
+
+<template name="today">
+  {{date}} - Chef of the day: {{whoShouldCook.name}}
+</template>
+
+<template name="deck">
+  <div class="deck">
+    {{#each people}}
+    <div class="card {{#if eating}}eating{{/if}}">
+      <h1>{{name}}</h1>
+      <div class="photoFrame">
+        <img src="{{img}}">
+      </div>
+      <ul class="stats">
+        <li>
+          <label>Servings</label>
+          <span>{{servings.given}} : {{servings.received}}</span>
+        </li>
+        <li>
+          <label>Last ate</label>
+          {{#if lastEaten}}
+          <span title="{{lastEaten}}">{{fromNow lastEaten}}</span>
+          {{/if}}
+        </li>
+        <li>
+          <label>Last cooked</label>
+          {{#if lastCooked}}
+          <span title="{{lastCooked}}">{{fromNow lastCooked}}</span>
+          {{/if}}
+        </li>
+      </ul>
+    </div>
+    {{/each}}
+  </div>
+</template>

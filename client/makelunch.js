@@ -1,49 +1,84 @@
-Handlebars.registerHelper('humanDateFormat', function (isoDate) {
-  return '> ' + isoDate
-})
+Meteor.subscribe('eaters')
+Meteor.subscribe('meals')
 
-Template.today.meal = function () {
-  return Today.findOne()
-}
+Meteor.startup(function () {
 
-Template.today.whoIsChef = function () {
-  var today = Today.findOne()
-  
-  var chef = today.people
-    .filter(function(p){ return p.eating })
-    .sort(function(a,b){
-      if (score(a) === score(b)) return 0;
-      if (score(a) > score(b)) return 1;
-      return -1
+  Router.map(function () {
+    
+    this.route('home', { 
+      path:'/' ,
+      data: function () {
+        return {
+          people: Eaters.find({}),
+          date: todaysDate(),
+          whoShouldCook: whoShouldCook()
+        }
+      }
+    })
+    
+    this.route('addmeal', { 
+      path:'/addmeal',
+      data: function () {
+        return {
+          people: Eaters.find({})
+        }
+      }
     })
 
-  return chef[0]
-}
+    this.route('addperson')
 
-Template.deck.eater = function () {
-  return Today.findOne().people
-}
+  })// end router.map
 
-Template.deck.events = {
-  'click .card': function (evt, tpl){
-    this.eating = !this.eating
+})// end Meteor.startup
 
-    var today = Today.findOne()
+Handlebars.registerHelper('fromNow', function (date) {
+  return moment(date, 'YYYY-MM-DD').fromNow()
+})
 
-    today.people
-      .filter(function(p){ return p._id === this._id}.bind(this))
-      .forEach(function(p){ p.eating = !p.eating })
+function whoShouldCook() {
+  var eaters = Eaters.find().fetch()
+  
+  eaters.sort(function (a,b) {
+    if (score(a) === score(b)) return 0;
+    if (score(a) > score(b)) return 1;
+    return -1
+  })
 
-    Today.update(today._id, today)
-
-    // Today.update(
-    //   {'_id': today._id, 'people._id': this._id},
-    //   { $set: {'awards.$.eating': !this.eating} }
-    // )
-  }
+  return eaters[0]
 }
 
 function score (person){
   if(!person || !person.servings) return 0;
   return person.servings.given - person.servings.received
+}
+
+Template.addmeal.events = {
+  'submit': function (evt, tpl) {
+    evt.preventDefault();
+
+    var meal = {
+      date: tpl.find('.mealDate').value,
+      chef: $(tpl.find('.mealChef')).val(),
+      eaters: $(tpl.find('.mealEaters')).val(),
+      guests: parseInt(tpl.find('.mealGuests').value, 10),
+      dish: tpl.find('.mealDish').value
+    }
+    console.log(meal)
+    Meals.insert(meal)
+    tpl.find('form').reset()
+  }
+}
+
+Template.addperson.events = {
+  'submit': function (evt, tpl) {
+    evt.preventDefault();
+
+    var person = {
+      name: tpl.find('.personName').value,
+      img: tpl.find('.personImg').value
+    }
+    console.log(person)
+    Eaters.insert(person)
+    tpl.find('form').reset()
+  }
 }
