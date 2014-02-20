@@ -8,7 +8,10 @@ Meteor.startup(function () {
       path:'/' ,
       data: function () {
         return {
-          people: Eaters.find({}),
+          people: Eaters.find({}).fetch().map(function (e) {
+            e.img = e.img || "http://www.gravatar.com/avatar/" + CryptoJS.MD5(e.name) + "?s=300&d=monsterid"
+            return e
+          }),
           date: todaysDate(),
           whoShouldCook: whoShouldCook()
         }
