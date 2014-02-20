@@ -52,7 +52,9 @@ Handlebars.registerHelper('fromNow', function (date) {
 })
 
 Handlebars.registerHelper('profile', function (userId) {
-  return Eaters.findOne(userId)
+  var eater = Eaters.findOne(userId)
+  eater.img = eater.img || "http://www.gravatar.com/avatar/" + CryptoJS.MD5(eater.name) + "?s=300&d=monsterid"
+  return eater
 })
 
 function whoShouldCook() {

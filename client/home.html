@@ -30,6 +30,8 @@
           <label>Last cooked</label>
           {{#if lastCooked}}
           <span title="{{lastCooked}}">{{fromNow lastCooked}}</span>
+          {{else}}
+          <span title="Never">Never</span>
           {{/if}}
         </li>
       </ul>
