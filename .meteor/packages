@@ -10,3 +10,4 @@ accounts-password
 accounts-ui
 iron-router
 moment
+crypto-md5
