@@ -8,10 +8,12 @@ Meteor.startup(function () {
       path:'/' ,
       data: function () {
         return {
-          people: Eaters.find({}).fetch().map(function (e) {
-            e.img = e.img || "http://www.gravatar.com/avatar/" + CryptoJS.MD5(e.name) + "?s=300&d=monsterid"
-            return e
-          }),
+          people: Eaters.find({}).fetch()
+            .map(function (e) {
+              e.img = e.img || "http://www.gravatar.com/avatar/" + CryptoJS.MD5(e.name) + "?s=300&d=monsterid"
+              return e
+            })
+            .sort(scoreSort),
           date: todaysDate(),
           whoShouldCook: whoShouldCook()
         }
@@ -57,14 +59,16 @@ Handlebars.registerHelper('profile', function (userId) {
   return eater
 })
 
+function scoreSort (a,b) {
+  if (score(a) === score(b)) return 0;
+  if (score(a) > score(b)) return 1;
+  return -1
+}
+
 function whoShouldCook() {
   var eaters = Eaters.find().fetch()
   
-  eaters.sort(function (a,b) {
-    if (score(a) === score(b)) return 0;
-    if (score(a) > score(b)) return 1;
-    return -1
-  })
+  eaters.sort(scoreSort)
 
   return eaters[0]
 }
