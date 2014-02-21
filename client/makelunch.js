@@ -95,6 +95,10 @@ Template.addmeal.events = {
   }
 }
 
+Template.addmeal.todaysDate = function () {
+  return todaysDate()
+}
+
 Template.addperson.events = {
   'submit': function (evt, tpl) {
     evt.preventDefault();
