@@ -24,6 +24,8 @@
           <label>Last ate</label>
           {{#if lastEaten}}
           <span title="{{lastEaten}}">{{fromNow lastEaten}}</span>
+          {{else}}
+          <span title="Never">Never</span>
           {{/if}}
         </li>
         <li>
