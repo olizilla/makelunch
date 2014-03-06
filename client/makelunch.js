@@ -50,7 +50,7 @@ Meteor.startup(function () {
 })// end Meteor.startup
 
 Handlebars.registerHelper('fromNow', function (date) {
-  return moment(date, 'YYYY-MM-DD').fromNow()
+  return moment(date + 'T12:00').fromNow()
 })
 
 Handlebars.registerHelper('profile', function (userId) {
