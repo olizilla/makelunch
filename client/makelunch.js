@@ -59,8 +59,19 @@ Handlebars.registerHelper('profile', function (userId) {
   return eater
 })
 
-function scoreSort (a,b) {
-  if (score(a) === score(b)) return 0;
+function scoreSort (a, b) {
+  if (score(a) === score(b)) {
+    var aLastCooked = a.lastCooked || "1970-01-01"
+    var bLastCooked = b.lastCooked || "1970-01-01"
+
+    if (moment(aLastCooked).isSame(bLastCooked)) {
+      return 0
+    } else if (moment(aLastCooked).isBefore(bLastCooked)) {
+      return -1
+    } else {
+      return 1
+    }
+  }
   if (score(a) > score(b)) return 1;
   return -1
 }
