@@ -141,7 +141,7 @@ input[type="date"].form-control{
   display: inline-block;
   width:49%;
   margin: 0;
-  max-width: 240px; 
+  max-width: 260px; 
 }
 
 .select2 {
@@ -150,7 +150,8 @@ input[type="date"].form-control{
 }
 .select2-container-multi {
   max-width: 520px;
-  height: 36px;
+  height: auto;
+  min-height: 36px;
   padding: 0;
 }
 .select2-container-multi .select2-choices .select2-search-field {
@@ -171,10 +172,15 @@ input[type="date"].form-control{
   background-color: rgba(24,49,96,0.9);
   border: none;
   border-top: 1px solid white;  
-  padding-top: 6px;
+  padding: 6px;
   color: white;
   box-shadow: none;
   -webkit-box-shadow: none;
+}
+.select2-results .select2-no-results,
+.select2-results .select2-searching,
+.select2-results .select2-selection-limit {
+  background-color: transparent;
 }
 .select2-results .select2-highlighted {
   background-color: transparent;

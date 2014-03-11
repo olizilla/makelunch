@@ -1,9 +1,6 @@
 Meteor.subscribe('eaters', function () {
-  // $(".mealChef").on("load", function (e) {
-  //   console.log(e)
-    $(".mealChef").select2()
-    $(".mealEaters").select2()
-//  })    
+  $(".mealChef").select2({formatNoMatches: function () {return ""}})
+  $(".mealEaters").select2({formatNoMatches: function () {return ""}})
 })
 
 Meteor.startup(function () {
