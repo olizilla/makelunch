@@ -198,7 +198,7 @@ input[type="date"].form-control{
   background: transparent;
 }
 .select2-search-choice-close:before {
-  content: "\f146";
+  content: "\f068";
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -206,4 +206,8 @@ input[type="date"].form-control{
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.select2-search-choice-close:hover:before {
+  content: "\f146";
 }
