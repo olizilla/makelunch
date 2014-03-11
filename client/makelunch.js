@@ -1,4 +1,10 @@
-Meteor.subscribe('eaters')
+Meteor.subscribe('eaters', function () {
+  // $(".mealChef").on("load", function (e) {
+  //   console.log(e)
+    $(".mealChef").select2()
+    $(".mealEaters").select2()
+//  })    
+})
 
 Meteor.startup(function () {
 
@@ -95,8 +101,8 @@ Template.addmeal.events = {
 
     var meal = {
       date: tpl.find('.mealDate').value,
-      chef: $(tpl.find('.mealChef')).val(),
-      eaters: $(tpl.find('.mealEaters')).val(),
+      chef: $('.mealChef').select2("val"),
+      eaters: $('.mealEaters').select2("val"),
       guests: parseInt(tpl.find('.mealGuests').value, 10),
       dish: tpl.find('.mealDish').value
     }
