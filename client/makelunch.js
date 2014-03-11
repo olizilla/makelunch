@@ -95,6 +95,12 @@ function score (person){
   return person.servings.given - person.servings.received
 }
 
+function resetForm (tpl) {
+  tpl.find('form').reset()
+  $(".mealChef").select2("val", "")
+  $(".mealEaters").select2("val", "")
+}
+
 Template.addmeal.events = {
   'submit': function (evt, tpl) {
     evt.preventDefault();
@@ -108,7 +114,7 @@ Template.addmeal.events = {
     }
     console.log(meal)
     Meals.insert(meal)
-    tpl.find('form').reset()
+    resetForm(tpl)
   }
 }
 
