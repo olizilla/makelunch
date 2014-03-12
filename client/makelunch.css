@@ -13,12 +13,31 @@ header{
   margin-bottom:10px;
 }
 header h1{
+  display: inline-block;
   padding:10px 5px;
   color: white;
   margin:0;
 }
 header h1 img {
   vertical-align: -22px;
+}
+header nav {
+  display: inline-block;
+  margin: 10px;
+  float: right;
+}
+header nav a {
+  text-decoration: none;
+  font-size: 24px;
+  padding: 10px;
+  color: white;
+}
+header nav a span {
+  display: inline;
+}
+header nav a:hover {
+  color: rgb(24,49,96);
+  background-color: white;
 }
 #chef {
   color: rgb(24,49,96);
@@ -217,3 +236,9 @@ input[type="date"].form-control{
 .select2-search-choice-close:hover:before {
   content: "\f146";
 }
+
+@media all and (max-width: 768px) {
+  header nav a span {
+    display: none;
+  }
+} 
