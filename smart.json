@@ -2,6 +2,7 @@
   "packages": {
     "iron-router": {},
     "moment": {},
-    "crypto-md5": {}
+    "crypto-md5": {},
+    "select2": {}
   }
 }

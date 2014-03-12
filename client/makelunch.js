@@ -89,25 +89,40 @@ function score (person){
   return person.servings.given - person.servings.received
 }
 
+function resetForm (tpl) {
+  tpl.find('form').reset()
+  $(".mealChef").select2("val", "")
+  $(".mealEaters").select2("val", "")
+}
+
+function addMealFormSelect2 () {
+  $(".mealChef").select2({formatNoMatches: function () {return ""}})
+  $(".mealEaters").select2({formatNoMatches: function () {return ""}})
+}
+
 Template.addmeal.events = {
   'submit': function (evt, tpl) {
     evt.preventDefault();
 
     var meal = {
       date: tpl.find('.mealDate').value,
-      chef: $(tpl.find('.mealChef')).val(),
-      eaters: $(tpl.find('.mealEaters')).val(),
+      chef: $('.mealChef').select2("val"),
+      eaters: $('.mealEaters').select2("val"),
       guests: parseInt(tpl.find('.mealGuests').value, 10),
       dish: tpl.find('.mealDish').value
     }
     console.log(meal)
     Meals.insert(meal)
-    tpl.find('form').reset()
+    resetForm(tpl)
   }
 }
 
 Template.addmeal.todaysDate = function () {
   return todaysDate()
+}
+
+Template.addmeal.rendered = function() {
+  addMealFormSelect2()
 }
 
 Template.addperson.events = {
