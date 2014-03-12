@@ -1,7 +1,4 @@
-Meteor.subscribe('eaters', function () {
-  $(".mealChef").select2({formatNoMatches: function () {return ""}})
-  $(".mealEaters").select2({formatNoMatches: function () {return ""}})
-})
+Meteor.subscribe('eaters')
 
 Meteor.startup(function () {
 
@@ -98,6 +95,11 @@ function resetForm (tpl) {
   $(".mealEaters").select2("val", "")
 }
 
+function addMealFormSelect2 () {
+  $(".mealChef").select2({formatNoMatches: function () {return ""}})
+  $(".mealEaters").select2({formatNoMatches: function () {return ""}})
+}
+
 Template.addmeal.events = {
   'submit': function (evt, tpl) {
     evt.preventDefault();
@@ -117,6 +119,10 @@ Template.addmeal.events = {
 
 Template.addmeal.todaysDate = function () {
   return todaysDate()
+}
+
+Template.addmeal.rendered = function() {
+  addMealFormSelect2()
 }
 
 Template.addperson.events = {
