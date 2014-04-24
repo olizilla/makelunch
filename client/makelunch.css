@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: JAILcopy, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-family: JAILcopy, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   background: #EEE;
 }
 header{
@@ -68,7 +68,8 @@ header nav a:hover {
   vertical-align: middle;
 }
 .photoFrame img{
-  min-width: 250px;
+  min-width: 100%;
+  min-height: 100%;
   max-width: 400px;
 }
 table .photoFrame{
@@ -88,7 +89,7 @@ table .photoFrame img{
   margin:0;
 
 }
-.card .stats li{ 
+.card .stats li{
   padding: 4px 4px 2px;
 }
 .card .stats li:nth-child(odd){
@@ -160,7 +161,7 @@ input[type="date"].form-control{
   display: inline-block;
   width:49%;
   margin: 0;
-  max-width: 260px; 
+  max-width: 260px;
 }
 
 .select2 {
@@ -190,7 +191,7 @@ input[type="date"].form-control{
 .select2-drop {
   background-color: rgba(24,49,96,0.9);
   border: none;
-  border-top: 1px solid white;  
+  border-top: 1px solid white;
   padding: 6px;
   color: white;
   box-shadow: none;
@@ -241,4 +242,4 @@ input[type="date"].form-control{
   header nav a span {
     display: none;
   }
-} 
+}

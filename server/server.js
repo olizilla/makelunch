@@ -7,7 +7,7 @@ Meteor.publish('meals', function () {
 })
 
 Meteor.startup(function () {
-  
+
   //TODO: prevent editing from anonymous users
   Eaters.allow({
     insert: function (userId, doc) {
@@ -40,7 +40,7 @@ Meteor.startup(function () {
       resetStats()
     }
   })
-   
+
 });
 
 function updateStats (meal) {
@@ -53,7 +53,7 @@ function updateChefs (meal) {
   Eaters.update(
     {'_id': { $in: meal.chef } },
     {
-      $inc: { 
+      $inc: {
         'mealsCooked': 1,
         'servings.given': meal.eaters.length
       },
@@ -67,7 +67,7 @@ function updateChefs (meal) {
 function updateEaters (meal) {
   Eaters.update(
     { '_id': { $in: meal.eaters } },
-    {  
+    {
       $set: { lastEaten: meal.date },
       $inc: { 'servings.received': 1 }
     },
@@ -79,12 +79,12 @@ function updateEaters (meal) {
 function resetStats () {
   Eaters.update(
     { }, // all
-    {  
-      $unset: { 
+    {
+      $unset: {
         lastEaten: "",
         lastCooked: ""
       },
-      $set: { 
+      $set: {
         mealsCooked: 0,
         'servings.given': 0,
         'servings.received': 0,
