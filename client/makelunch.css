@@ -10,7 +10,7 @@ body {
 }
 header{
   background: rgb(24,49,96);
-  margin-bottom:10px;
+  position: relative;
 }
 header h1{
   display: inline-block;
@@ -39,6 +39,14 @@ header nav a:hover {
   color: rgb(24,49,96);
   background-color: white;
 }
+header #feedback {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  text-align: right;
+  width: 250px;
+  color: white;
+}
 #chef {
   color: rgb(24,49,96);
 }
@@ -58,18 +66,21 @@ header nav a:hover {
 .card h1{
   margin: 0;
   padding:4px 0;
+  font-size: 1.5em;
+  max-width: 200px;
+  overflow: hidden;
 }
 .photoFrame {
   display: inline-block;
-  width:250px;
-  height:250px;
+  width:200px;
+  height:200px;
   overflow: hidden;
   margin-bottom: 7px;
   vertical-align: middle;
 }
 .photoFrame img{
-  min-width: 250px;
-  max-width: 400px;
+  width: 100%;
+  height: auto;
 }
 table .photoFrame{
   width:80px;
@@ -86,7 +97,7 @@ table .photoFrame img{
   list-style-type: none;
   padding:0;
   margin:0;
-
+  font-size: 0.9em;
 }
 .card .stats li{ 
   padding: 4px 4px 2px;
@@ -103,6 +114,104 @@ table .photoFrame img{
 .card .stats span{
   font-weight: 600;
 }
+/*
+* Homepage add meal mode
+*/
+
+button {
+  background: white;
+  padding: 6px;
+  color: rgb(24,49,96);
+}
+
+.add-meal-hint {
+  display: none;
+  margin: 1px 0 0;
+}
+
+.add-meal-hint h1 {
+  display: inline-block;
+}
+
+.adding-meal .welcome {
+  display: none;
+}
+
+.adding-meal .add-meal-hint {
+  display: block;
+}
+
+button.save, button.done {
+  display: none;
+}
+
+.adding-meal:not(.adding-chefs) button.done {
+  display: inline-block;
+}
+
+.adding-meal.adding-chefs button.save {
+  display: inline-block;
+}
+
+.adding-meal .meal-details {
+  width: 680px;
+  display: inline-block;
+  float: right;
+  text-align: right;
+  margin: 0.6em 0;
+}
+
+.adding-meal .meal-details br {
+  display: none;
+}
+
+.adding-meal.adding-chefs .add-eaters-hint {
+  display: none;
+}
+
+.adding-meal:not(.adding-chefs) .add-chefs-hint {
+  display: none;
+}
+
+.adding-meal .card {
+  width: 100%;
+  display: block;
+  height: 50px;
+  padding: 0;
+  border: 0;
+}
+
+.adding-meal .card > h1 {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.adding-meal .card .photoFrame {
+  width: 50px;
+  height: 50px;
+  float: left;
+}
+
+.adding-meal .card .stats {
+  display: none;
+}
+
+.adding-meal .card.eating {
+  opacity: 1;
+}
+
+.adding-meal .card.chef {
+  background-color: white;
+  color: rgb(24,49,96);
+}
+
+.adding-meal .card:not(.eating) {
+  opacity: 0.6;
+}
+
+/*
+* Add meal page
+*/
 
 .login-buttons-dropdown-align-right{
   float:right;
@@ -156,11 +265,16 @@ input[type="date"].form-control{
 }
 
 .form-group.guests,
-.form-group.date {
+.form-group.date,
+.form-group.dish {
   display: inline-block;
-  width:49%;
+  width:40%;
   margin: 0;
   max-width: 260px; 
+}
+
+.form-group.date {
+  width: 40%;
 }
 
 .select2 {
@@ -235,6 +349,25 @@ input[type="date"].form-control{
 
 .select2-search-choice-close:hover:before {
   content: "\f146";
+}
+
+@media all and (max-width: 1000px) {
+  .adding-meal .meal-details {
+    width: auto;
+    display: block;
+    float: none;
+    text-align: left;
+    margin: 0 0 0.6em;
+  }
+
+  .adding-meal .meal-details .form-group {
+    margin: 10px 0;
+    min-width: 220px;
+  }
+
+  .adding-meal .meal-details br {
+    display: block;
+  }
 }
 
 @media all and (max-width: 768px) {

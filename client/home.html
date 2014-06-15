@@ -1,7 +1,23 @@
 <template name="home">
 
-  <h1>{{> today}}</h1>
-
+  <h1 class="welcome">{{> today}}</h1>
+  <div class="add-meal-hint">
+    <h1 class="add-eaters-hint">Who's eating?</h1>
+    <h1 class="add-chefs-hint">Who's cooking?</h1>
+    <button class="done btn">Done</button>
+    <button class="save btn">Save</button>
+    <h2 class="meal-details">
+      <span>Cooking</span>
+      <div class="form-group dish">
+        <input class="mealDish form-control" type="text" />
+      </div>
+      <br>
+      <span>on</span>
+      <div class="form-group date">
+        <input class="mealDate form-control" type="date" value="{{todaysDate}}"/>
+      </div>
+    </h2>
+  </div>
   {{> deck}}
 </template>
 
@@ -12,7 +28,7 @@
 <template name="deck">
   <div class="deck">
     {{#each people}}
-    <div class="card {{#if eating}}eating{{/if}}">
+    <div class="card{{#if eating}} eating{{/if}}" data-person-id="{{_id}}">
       <h1>{{name}}</h1>
       {{> photoFrame this}}
       <ul class="stats">
