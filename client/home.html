@@ -2,21 +2,23 @@
 
   <h1 class="welcome">{{> today}}</h1>
   <div class="add-meal-hint">
-    <h1 class="add-eaters-hint">Who's eating?</h1>
-    <h1 class="add-chefs-hint">Who's cooking?</h1>
-    <button class="done btn">Done</button>
-    <button class="save btn">Save</button>
-    <h2 class="meal-details">
-      <span>Cooking</span>
+    <h2 class="add-eaters-hint">Who ate? (including chef)</h2>
+    <h2 class="add-chefs-hint">Who cooked?</h2>
+    <h2 class="add-meal-details-hint">What did they cook?</h2>
+    <button class="next btn">Next</button>
+    <button class="save btn fa fa-check">Save</button>
+    <button class="cancel btn pull-right fa fa-times">Cancel</button>
+    <div class="meal-details">
       <div class="form-group dish">
-        <input class="mealDish form-control" type="text" />
+        <label for="mealDish">Dish</label>
+        <input class="mealDish form-control" id="mealDish" type="text" />
       </div>
       <br>
-      <span>on</span>
       <div class="form-group date">
-        <input class="mealDate form-control" type="date" value="{{todaysDate}}"/>
+        <label for="mealDate">Date</label>
+        <input class="mealDate form-control" id="mealDate" type="date" value="{{todaysDate}}"/>
       </div>
-    </h2>
+    </div>
   </div>
   {{> deck}}
 </template>

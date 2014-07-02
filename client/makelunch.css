@@ -124,13 +124,22 @@ button {
   color: rgb(24,49,96);
 }
 
+button.btn {
+  background-color: rgb(255,0,0);
+  color: white;
+  border-radius: 0;
+  line-height: 18px;
+  vertical-align: top;
+  margin: 15px 0 15px 10px;
+}
+
+button.btn::before {
+  margin-right: 5px;
+}
+
 .add-meal-hint {
   display: none;
   margin: 1px 0 0;
-}
-
-.add-meal-hint h1 {
-  display: inline-block;
 }
 
 .adding-meal .welcome {
@@ -141,36 +150,63 @@ button {
   display: block;
 }
 
-button.save, button.done {
+button.save, button.next {
   display: none;
 }
 
-.adding-meal:not(.adding-chefs) button.done {
+.adding-meal button.next, .adding-chefs button.next {
   display: inline-block;
 }
 
-.adding-meal.adding-chefs button.save {
+.add-meal-hint .add-meal-details-hint {
+  display: none;
+}
+
+.adding-meal-details .add-meal-details-hint {
   display: inline-block;
 }
 
-.adding-meal .meal-details {
-  width: 680px;
+.adding-meal-details button.save {
   display: inline-block;
-  float: right;
-  text-align: right;
-  margin: 0.6em 0;
 }
 
-.adding-meal .meal-details br {
+.adding-meal-details button.next {
   display: none;
 }
 
-.adding-meal.adding-chefs .add-eaters-hint {
+.meal-details {
   display: none;
 }
 
-.adding-meal:not(.adding-chefs) .add-chefs-hint {
+.adding-meal-details .deck {
   display: none;
+}
+
+.adding-meal-details .meal-details {
+  display: block;
+  text-align: center;
+  font-size: 24px;
+  margin: 30px auto;
+}
+
+.adding-meal-details .meal-details br {
+  display: none;
+}
+
+.add-eaters-hint, .add-chefs-hint, .add-meal-details-hint {
+  display: none;
+}
+
+.adding-meal.adding-eaters .add-eaters-hint {
+  display: inline-block;
+}
+
+.adding-meal.adding-chefs .add-chefs-hint {
+  display: inline-block;
+}
+
+.adding-meal.adding-meal-details .add-meal-details-hint {
+  display: inline-block;
 }
 
 .adding-meal .card {
@@ -352,20 +388,15 @@ input[type="date"].form-control{
 }
 
 @media all and (max-width: 1000px) {
-  .adding-meal .meal-details {
-    width: auto;
-    display: block;
-    float: none;
-    text-align: left;
-    margin: 0 0 0.6em;
+  .adding-meal-details .meal-details {
   }
 
-  .adding-meal .meal-details .form-group {
+  .adding-meal-details .meal-details .form-group {
     margin: 10px 0;
     min-width: 220px;
   }
 
-  .adding-meal .meal-details br {
+  .adding-meal-details .meal-details br {
     display: block;
   }
 }

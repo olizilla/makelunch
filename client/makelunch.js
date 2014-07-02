@@ -89,10 +89,10 @@ function score (person){
   return person.servings.given - person.servings.received
 }
 
-function resetForm (tpl) {
-  tpl.find('form').reset()
-  $(".mealChef").select2("val", "")
-  $(".mealEaters").select2("val", "")
+function resetHomepage () {
+  $("body").removeClass()
+  $(".deck .card").removeClass("eating chef")
+  $("input").val("")
 }
 
 function addMealFormSelect2 () {
@@ -100,29 +100,44 @@ function addMealFormSelect2 () {
   $(".mealEaters").select2({formatNoMatches: function () {return ""}})
 }
 
-function toggleAddMealMode () {
-  $("body").toggleClass("adding-meal")
+function enterAddMealMode () {
+  console.log("> Enter add meal mode")
+  $("body").addClass("adding-meal adding-eaters")
 
   $(".adding-meal .card").off("click")
   $(".adding-meal .card").on("click", function () {
     $(this).toggleClass("eating")
   })
 
-  $(".adding-meal button.done").on("click", function () {
+  $(".adding-meal button.next").off()
+  $(".adding-meal button.next").on("click", function () {
     doneChoosingEaters()
   })
 }
 
 function doneChoosingEaters () {
-  $("body").addClass("adding-chefs")
+  console.log("> Enter add chef mode")
+  $("body").removeClass("adding-eaters").addClass("adding-chefs")
   $(".adding-meal .card").off("click")
   $(".adding-meal .card").on("click", function () {
     $(this).toggleClass("chef")
   })
 
-  $(".adding-meal.adding-chefs button.save").on("click", function () {
-    insertMeal()
+  $(".adding-meal.adding-chefs button.next").off()
+  $(".adding-meal.adding-chefs button.next").on("click", function () {
+    doneChoosingChef()
   })
+}
+
+function doneChoosingChef () {
+  $("body").removeClass("adding-chefs").addClass("adding-meal-details")
+  $(".adding-meal-details button.save").on("click", function () {
+    doneDescribingMeal()
+  })
+}
+
+function doneDescribingMeal () {
+  insertMeal()
 }
 
 function insertMeal() {
@@ -136,7 +151,7 @@ function insertMeal() {
   console.log(meal)
   Meals.insert(meal)
   showFeedback("Meal added")
-  toggleAddMealMode()
+  resetHomepage()
 }
 
 function filterPeople (cssClass) {
@@ -164,30 +179,15 @@ function showFeedback (text) {
   })(0)
 }
 
-Template.addmeal.events = {
-  'submit': function (evt, tpl) {
-    evt.preventDefault();
-
-    var meal = {
-      date: tpl.find('.mealDate').value,
-      chef: $('.mealChef').select2("val"),
-      eaters: $('.mealEaters').select2("val"),
-      guests: parseInt(tpl.find('.mealGuests').value, 10),
-      dish: tpl.find('.mealDish').value
-    }
-    console.log(meal)
-    Meals.insert(meal)
-    resetForm(tpl)
-  }
-}
-
 Template.home.rendered = function () {
   console.log("home")
   $(".add-meal").off("click")
   $(".add-meal").on("click", function (e) {
     e.preventDefault()
-    console.log("adding a meal")
-    toggleAddMealMode()
+    enterAddMealMode()
+  })
+  $(".add-meal-hint .btn.cancel").on("click", function () {
+    resetHomepage()
   })
 }
 
