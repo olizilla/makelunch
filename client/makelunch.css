@@ -72,15 +72,16 @@ header #feedback {
 }
 .photoFrame {
   display: inline-block;
-  width:200px;
-  height:200px;
+  width:230px;
+  height:230px;
   overflow: hidden;
   margin-bottom: 7px;
   vertical-align: middle;
 }
 .photoFrame img{
-  width: 100%;
-  height: auto;
+  min-height: 100%;
+  min-width: 100%;
+  max-width: 160%;
 }
 table .photoFrame{
   width:80px;
