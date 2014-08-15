@@ -5,12 +5,12 @@
 }
 
 body {
-  font-family: JAILcopy, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: JAILcopy, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
   background: #EEE;
 }
 header{
   background: rgb(24,49,96);
-  margin-bottom:10px;
+  position: relative;
 }
 header h1{
   display: inline-block;
@@ -39,6 +39,14 @@ header nav a:hover {
   color: rgb(24,49,96);
   background-color: white;
 }
+header #feedback {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  text-align: right;
+  width: 250px;
+  color: white;
+}
 #chef {
   color: rgb(24,49,96);
 }
@@ -58,19 +66,22 @@ header nav a:hover {
 .card h1{
   margin: 0;
   padding:4px 0;
+  font-size: 1.5em;
+  max-width: 200px;
+  overflow: hidden;
 }
 .photoFrame {
   display: inline-block;
-  width:250px;
-  height:250px;
+  width:230px;
+  height:230px;
   overflow: hidden;
   margin-bottom: 7px;
   vertical-align: middle;
 }
 .photoFrame img{
-  min-width: 100%;
   min-height: 100%;
-  max-width: 400px;
+  min-width: 100%;
+  max-width: 160%;
 }
 table .photoFrame{
   width:80px;
@@ -87,9 +98,9 @@ table .photoFrame img{
   list-style-type: none;
   padding:0;
   margin:0;
-
+  font-size: 0.9em;
 }
-.card .stats li{
+.card .stats li{ 
   padding: 4px 4px 2px;
 }
 .card .stats li:nth-child(odd){
@@ -104,6 +115,140 @@ table .photoFrame img{
 .card .stats span{
   font-weight: 600;
 }
+/*
+* Homepage add meal mode
+*/
+
+button {
+  background: white;
+  padding: 6px;
+  color: rgb(24,49,96);
+}
+
+button.btn {
+  background-color: rgb(255,0,0);
+  color: white;
+  border-radius: 0;
+  line-height: 18px;
+  vertical-align: top;
+  margin: 15px 0 15px 10px;
+}
+
+button.btn::before {
+  margin-right: 5px;
+}
+
+.add-meal-hint {
+  display: none;
+  margin: 1px 0 0;
+}
+
+.adding-meal .welcome {
+  display: none;
+}
+
+.adding-meal .add-meal-hint {
+  display: block;
+}
+
+button.save, button.next {
+  display: none;
+}
+
+.adding-meal button.next, .adding-chefs button.next {
+  display: inline-block;
+}
+
+.add-meal-hint .add-meal-details-hint {
+  display: none;
+}
+
+.adding-meal-details .add-meal-details-hint {
+  display: inline-block;
+}
+
+.adding-meal-details button.save {
+  display: inline-block;
+}
+
+.adding-meal-details button.next {
+  display: none;
+}
+
+.meal-details {
+  display: none;
+}
+
+.adding-meal-details .deck {
+  display: none;
+}
+
+.adding-meal-details .meal-details {
+  display: block;
+  text-align: center;
+  font-size: 24px;
+  margin: 30px auto;
+}
+
+.adding-meal-details .meal-details br {
+  display: none;
+}
+
+.add-eaters-hint, .add-chefs-hint, .add-meal-details-hint {
+  display: none;
+}
+
+.adding-meal.adding-eaters .add-eaters-hint {
+  display: inline-block;
+}
+
+.adding-meal.adding-chefs .add-chefs-hint {
+  display: inline-block;
+}
+
+.adding-meal.adding-meal-details .add-meal-details-hint {
+  display: inline-block;
+}
+
+.adding-meal .card {
+  width: 100%;
+  display: block;
+  height: 50px;
+  padding: 0;
+  border: 0;
+}
+
+.adding-meal .card > h1 {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.adding-meal .card .photoFrame {
+  width: 50px;
+  height: 50px;
+  float: left;
+}
+
+.adding-meal .card .stats {
+  display: none;
+}
+
+.adding-meal .card.eating {
+  opacity: 1;
+}
+
+.adding-meal .card.chef {
+  background-color: white;
+  color: rgb(24,49,96);
+}
+
+.adding-meal .card:not(.eating) {
+  opacity: 0.6;
+}
+
+/*
+* Add meal page
+*/
 
 .login-buttons-dropdown-align-right{
   float:right;
@@ -157,11 +302,16 @@ input[type="date"].form-control{
 }
 
 .form-group.guests,
-.form-group.date {
+.form-group.date,
+.form-group.dish {
   display: inline-block;
-  width:49%;
+  width:40%;
   margin: 0;
-  max-width: 260px;
+  max-width: 260px; 
+}
+
+.form-group.date {
+  width: 40%;
 }
 
 .select2 {
@@ -191,7 +341,7 @@ input[type="date"].form-control{
 .select2-drop {
   background-color: rgba(24,49,96,0.9);
   border: none;
-  border-top: 1px solid white;
+  border-top: 1px solid white;  
   padding: 6px;
   color: white;
   box-shadow: none;
@@ -238,8 +388,22 @@ input[type="date"].form-control{
   content: "\f146";
 }
 
+@media all and (max-width: 1000px) {
+  .adding-meal-details .meal-details {
+  }
+
+  .adding-meal-details .meal-details .form-group {
+    margin: 10px 0;
+    min-width: 220px;
+  }
+
+  .adding-meal-details .meal-details br {
+    display: block;
+  }
+}
+
 @media all and (max-width: 768px) {
   header nav a span {
     display: none;
   }
-}
+} 
