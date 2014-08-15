@@ -126,6 +126,18 @@ table .photoFrame img{
 .good .score:before{
   content: "+"
 }
+.adding-meal .score{
+  display: none;
+}
+
+.rye{
+  min-height:500px;
+  background: url(http://fc05.deviantart.net/fs70/i/2010/059/2/6/Green_Grass_Texture_01_by_goodtextures.jpg);
+  border: dashed 5px #333;
+
+  margin-top:300px;
+  padding: 10px 4px;
+}
 
 /*
 * Homepage add meal mode

@@ -8,13 +8,21 @@ Meteor.startup(function () {
       path:'/' ,
       data: function () {
         return {
-          people: Eaters.find({}).fetch()
+          eaters: Eaters.find({status:'jail'}).fetch()
             .map(function (e) {
               e.img = e.img || "http://www.gravatar.com/avatar/" + CryptoJS.MD5(e.name) + "?s=300&d=monsterid"
               return e
             })
             .sort(scoreSort),
+
+          mia: Eaters.find({status:'rye'}).fetch()
+            .map(function (e) {
+              e.img = e.img || "http://www.gravatar.com/avatar/" + CryptoJS.MD5(e.name) + "?s=300&d=monsterid"
+              return e
+            }),
+
           date: todaysDate(),
+
           whoShouldCook: whoShouldCook()
         }
       }
@@ -33,7 +41,7 @@ Meteor.startup(function () {
 
     this.route('meals', {
       path:'/meals',
-      before: [
+      onBeforeAction: [
         function () {
           this.subscribe('meals')
         }
@@ -191,7 +199,6 @@ function showFeedback (text) {
 }
 
 Template.home.rendered = function () {
-  console.log("home")
   $(".add-meal").off("click")
   $(".add-meal").on("click", function (e) {
     e.preventDefault()
@@ -200,6 +207,7 @@ Template.home.rendered = function () {
   $(".add-meal-hint .btn.cancel").on("click", function () {
     resetHomepage()
   })
+
 }
 
 Template.home.todaysDate = function () {
@@ -224,3 +232,32 @@ Template.addperson.events = {
     tpl.find('form').reset()
   }
 }
+
+Template.card.events({
+  'click': function(evt, tpl){
+
+    var $this = $(tpl.firstNode)
+    var data = this
+
+    $this.pep({
+      constrainTo: 'window',
+      droppable: '.drop',
+      revert: true,
+      revertIf: function(ev, obj){
+        return !this.activeDropRegions.length
+      },
+      stop: function(ev, obj){
+        if (obj.activeDropRegions.length > 0) {
+          if (obj.activeDropRegions[0].hasClass('rye')){
+//            console.log('rye', data)
+            Eaters.update(data._id, { $set: {status: 'rye'}})
+          }
+          if (obj.activeDropRegions[0].hasClass('deck')){
+//            console.log('deck', data)
+            Eaters.update(data._id, { $set: {status: 'jail'}})
+          }
+        }
+      }
+    } )
+  }
+})
