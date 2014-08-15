@@ -59,6 +59,17 @@ Handlebars.registerHelper('profile', function (userId) {
   return eater
 })
 
+UI.registerHelper('score', function (eater) {
+  return eater.servings.given - eater.servings.received
+})
+
+UI.registerHelper('scoreSummary', function (eater) {
+  var score = eater.servings.given - eater.servings.received
+  if (score === 0) return "perfect"
+  if (score > 0) return "good"
+  if (score < 0) return "bad"
+})
+
 function scoreSort (a, b) {
   if (score(a) === score(b)) {
     var aLastCooked = a.lastCooked || "1970-01-01"

@@ -30,8 +30,8 @@
 <template name="deck">
   <div class="deck">
     {{#each people}}
-    <div class="card{{#if eating}} eating{{/if}}" data-person-id="{{_id}}">
-      <h1>{{name}}</h1>
+    <div class="card{{#if eating}} eating{{/if}} {{scoreSummary this}}" data-person-id="{{_id}}">
+      <h1>{{name}} <span class="score">{{ score this }}</span></h1>
       {{> photoFrame this}}
       <ul class="stats">
         <li>

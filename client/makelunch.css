@@ -67,7 +67,6 @@ header #feedback {
   margin: 0;
   padding:4px 0;
   font-size: 1.5em;
-  max-width: 200px;
   overflow: hidden;
 }
 .photoFrame {
@@ -115,6 +114,19 @@ table .photoFrame img{
 .card .stats span{
   font-weight: 600;
 }
+.card .score{
+  float:right;
+}
+.bad .score {
+  color: red;
+}
+.good .score {
+  color: green;
+}
+.good .score:before{
+  content: "+"
+}
+
 /*
 * Homepage add meal mode
 */
