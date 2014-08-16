@@ -3,36 +3,24 @@ Meteor.subscribe('eaters')
 Meteor.startup(function () {
 
   Router.map(function () {
-    
-    this.route('home', { 
+
+    this.route('home', {
       path:'/' ,
       data: function () {
         return {
-          eaters: Eaters.find({status:'jail'}).fetch()
-            .map(function (e) {
-              e.img = e.img || "http://www.gravatar.com/avatar/" + CryptoJS.MD5(e.name) + "?s=300&d=monsterid"
-              return e
-            })
-            .sort(scoreSort),
-
-          mia: Eaters.find({status:'rye'}).fetch()
-            .map(function (e) {
-              e.img = e.img || "http://www.gravatar.com/avatar/" + CryptoJS.MD5(e.name) + "?s=300&d=monsterid"
-              return e
-            }),
-
+          eaters: Eaters.find({status:'jail'}).fetch().sort(scoreSort),
+          mia: Eaters.find({status:'rye'}).fetch(),
           date: todaysDate(),
-
           whoShouldCook: whoShouldCook()
         }
       }
     })
-    
-    this.route('addmeal', { 
+
+    this.route('addmeal', {
       path:'/addmeal',
       data: function () {
         return {
-          people: Eaters.find({})
+          people: Eaters.find({status:'jail'})
         }
       }
     })
@@ -57,11 +45,11 @@ Meteor.startup(function () {
 
 })// end Meteor.startup
 
-Handlebars.registerHelper('fromNow', function (date) {
+UI.registerHelper('fromNow', function (date) {
   return moment(date + 'T12:00').fromNow()
 })
 
-Handlebars.registerHelper('profile', function (userId) {
+UI.registerHelper('profile', function (userId) {
   var eater = Eaters.findOne(userId)
   eater.img = eater.img || "http://www.gravatar.com/avatar/" + CryptoJS.MD5(eater.name) + "?s=300&d=monsterid"
   return eater
@@ -112,11 +100,6 @@ function resetHomepage () {
   $("body").removeClass()
   $(".deck .card").removeClass("eating chef")
   $("input").val("")
-}
-
-function addMealFormSelect2 () {
-  $(".mealChef").select2({formatNoMatches: function () {return ""}})
-  $(".mealEaters").select2({formatNoMatches: function () {return ""}})
 }
 
 function enterAddMealMode () {
@@ -198,39 +181,8 @@ function showFeedback (text) {
   })(0)
 }
 
-Template.home.rendered = function () {
-  $(".add-meal").off("click")
-  $(".add-meal").on("click", function (e) {
-    e.preventDefault()
-    enterAddMealMode()
-  })
-  $(".add-meal-hint .btn.cancel").on("click", function () {
-    resetHomepage()
-  })
-
-}
-
 Template.home.todaysDate = function () {
   return todaysDate()
-}
-
-Template.addmeal.rendered = function() {
-  addMealFormSelect2()
-}
-
-Template.addperson.events = {
-  'submit': function (evt, tpl) {
-    evt.preventDefault();
-
-    var person = {
-      name: tpl.find('.personName').value,
-      img: tpl.find('.personImg').value
-    }
-    console.log(person)
-    Eaters.insert(person)
-    showFeedback("Added " + person.name)
-    tpl.find('form').reset()
-  }
 }
 
 Template.card.events({

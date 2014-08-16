@@ -1,27 +1,6 @@
 <template name="home">
-
   <h1 class="welcome">{{> today}}</h1>
-  <div class="add-meal-hint">
-    <h2 class="add-eaters-hint">Who ate? (including chef)</h2>
-    <h2 class="add-chefs-hint">Who cooked?</h2>
-    <h2 class="add-meal-details-hint">What did they cook?</h2>
-    <button class="next btn">Next</button>
-    <button class="save btn fa fa-check">Save</button>
-    <button class="cancel btn pull-right fa fa-times">Cancel</button>
-    <div class="meal-details">
-      <div class="form-group dish">
-        <label for="mealDish">Dish</label>
-        <input class="mealDish form-control" id="mealDish" type="text" />
-      </div>
-      <br>
-      <div class="form-group date">
-        <label for="mealDate">Date</label>
-        <input class="mealDate form-control" id="mealDate" type="date" value="{{todaysDate}}"/>
-      </div>
-    </div>
-  </div>
   {{> deck}}
-
   {{> rye }}
 </template>
 
