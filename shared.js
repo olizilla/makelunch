@@ -10,7 +10,15 @@ Eaters = new Meteor.Collection('Eaters', { transform: function (e) {
 Eaters.create = function(opts){
   if(typeof opts.name != 'string' || opts.name === '' || opts.name.match(/^\s+$/)  ) throw new Error("name not string")
   opts.status = opts.status || 'jail'
+  opts.servings = opts.servings || {'given':0,'received':0}
   return Eaters.insert(opts)
+}
+
+Eaters.scoreSummary = function(eater){
+  var score = eater.servings.given - eater.servings.received
+  if (score === 0) return "perfect"
+  if (score > 0) return "good"
+  if (score < 0) return "bad"
 }
 
 // returns todays date as 2014-02-09

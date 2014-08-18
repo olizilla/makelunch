@@ -42,7 +42,9 @@ Meteor.startup(function () {
     })
 
   })// end router.map
-
+  
+  //registerHelpers
+  UI.registerHelper('scoreSummary', Eaters.scoreSummary)
 })// end Meteor.startup
 
 UI.registerHelper('fromNow', function (date) {
@@ -59,12 +61,6 @@ UI.registerHelper('score', function (eater) {
   return eater.servings.given - eater.servings.received
 })
 
-UI.registerHelper('scoreSummary', function (eater) {
-  var score = eater.servings.given - eater.servings.received
-  if (score === 0) return "perfect"
-  if (score > 0) return "good"
-  if (score < 0) return "bad"
-})
 
 function scoreSort (a, b) {
   if (score(a) === score(b)) {
