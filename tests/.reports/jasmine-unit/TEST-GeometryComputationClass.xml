@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<testsuite name="GeometryComputationClass" errors="0" tests="4" failures="0" time="0.004" timestamp="2014-08-18T11:59:53">
+  <testcase classname="GeometryComputationClass" name="calculates surface area of a sphere correctly" time="0.002"></testcase>
+  <testcase classname="GeometryComputationClass" name="calculates surface area of a cube correctly" time="0"></testcase>
+  <testcase classname="GeometryComputationClass" name="calculates volume a sphere correctly" time="0"></testcase>
+  <testcase classname="GeometryComputationClass" name="calculates volume of a cube correctly" time="0.001"></testcase>
+</testsuite>
+</testsuites>
