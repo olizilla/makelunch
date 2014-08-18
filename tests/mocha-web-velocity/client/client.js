@@ -38,15 +38,19 @@ if (!(typeof MochaWeb === 'undefined')){
       
       it("should respect status if exists", function(){
         var testUser = {'name':'Oli','mealsCooked':18, 'status':'rye'}
-        
         var testUserId = Eaters.create(testUser)
-        
         var result = Eaters.findOne(testUserId)
-        
-        chai.expect( result.status ).to.equal( 'rye' )
-        
+        chai.expect( result.status ).to.equal( 'rye' ) 
         Eaters.remove(testUserId)  
       })
+      
+      it("should not add an Eater if Eater has no name", function(){
+        chai.expect( Eaters.create.bind(this, {'name':null}) ).to.throw(Error)
+        chai.expect( Eaters.create.bind(this, {'name':""}) ).to.throw(Error)
+        chai.expect( Eaters.create.bind(this, {'name':" "}) ).to.throw(Error)
+      })
+      
+      
       
       //tear down
        

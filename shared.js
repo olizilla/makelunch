@@ -8,6 +8,7 @@ Eaters = new Meteor.Collection('Eaters', { transform: function (e) {
 }})
 
 Eaters.create = function(opts){
+  if(typeof opts.name != 'string' || opts.name === '' || opts.name.match(/^\s+$/)  ) throw new Error("name not string")
   opts.status = opts.status || 'jail'
   return Eaters.insert(opts)
 }
