@@ -3,6 +3,7 @@
     "iron-router": {},
     "moment": {},
     "crypto-md5": {},
-    "select2": {}
+    "select2": {},
+    "velocity-quick-start": {}
   }
 }
