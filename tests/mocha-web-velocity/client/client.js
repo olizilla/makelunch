@@ -55,30 +55,27 @@ if (!(typeof MochaWeb === 'undefined')){
        
     })
     describe("Eaters.scoreSummary", function(){
-      /*
-      it('should throw an error if Eaters.servings.given is not defined', function(){
-        chai.expect( Eaters.scoreSummary.bind(this, {} ) )to.throw(Error)
+      
+      it('should return null if eaters is not defined', function(){
+        var eater
+        var result = Eaters.scoreSummary(eater)
+        chai.expect( result ).to.equal( null )
       })
-      */
-      /*
       it("should return 'perfect'", function(){
-        var eater = {'servings': {'given' : 3,'recieved' : 3} }
+        var eater = {'servings': {'given' : 3,'received' : 3} }
         var result = Eaters.scoreSummary(eater)
-        chai.expect( result.given ).to.equal(3)
+        chai.expect( result ).to.equal( 'perfect' )
       })
-      
       it("should return 'good'", function(){
-        var eater = {'servings': [ {'given' : 9}, {'recieved' : 3} ]}
+        var eater = {'servings': {'given' : 6,'received' : 3} }
         var result = Eaters.scoreSummary(eater)
-        chai.expect( result.given ).to.equal(3)
+        chai.expect( result ).to.equal( 'good' )
       })
-      
       it("should return 'bad'", function(){
-        var eater = {'servings': [ {'given' : 3}, {'recieved' : 9} ]}
+        var eater = {'servings': {'given' : 1,'received' : 3} }
         var result = Eaters.scoreSummary(eater)
-        chai.expect( result.given ).to.equal(3)
+        chai.expect( result ).to.equal( 'bad' )
       })
-       */
     })
   });
 }

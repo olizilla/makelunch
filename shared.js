@@ -15,6 +15,7 @@ Eaters.create = function(opts){
 }
 
 Eaters.scoreSummary = function(eater){
+  if(!eater) return null
   var score = eater.servings.given - eater.servings.received
   if (score === 0) return "perfect"
   if (score > 0) return "good"
