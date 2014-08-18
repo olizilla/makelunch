@@ -7,6 +7,11 @@ Eaters = new Meteor.Collection('Eaters', { transform: function (e) {
   return e
 }})
 
+Eaters.create = function(opts){
+  opts.status = opts.status || 'jail'
+  return Eaters.insert(opts)
+}
+
 // returns todays date as 2014-02-09
 todaysDate = function todaysDate() {
   return new Date().toISOString().split('T')[0]

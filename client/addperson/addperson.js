@@ -7,7 +7,7 @@ Template.addperson.events = {
       img: tpl.find('.personImg').value
     }
     console.log(person)
-    Eaters.insert(person)
+    Eaters.create(person)
     showFeedback("Added " + person.name)
     tpl.find('form').reset()
   }
