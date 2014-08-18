@@ -1,24 +1,27 @@
 <template name="addmeal">
   <form class="addMeal">
-    <div class="form-group">
-      <label>Who's eating?</label>
-      <select class="mealEaters form-control" multiple="multiple">
-        {{#each people}}
-        <option value="{{_id}}">{{name}}</option>
-        {{/each}}
-      </select>
+    <h1>Who's eating?</h1>
+    <div class="mealEaters">
+      {{#each people}}
+        <div class="card" data-eater="{{_id}}">
+          <h1>{{name}}</h1>
+          {{> photoFrame this}}
+        </div>
+      {{/each}}
     </div>
-    <div class="form-group">
-      <label>Who's cooking?</label>
-      <select class="mealChef form-control" multiple="multiple">
-        {{#each people}}
-        <option value="{{_id}}">{{name}}</option>
-        {{/each}}
-      </select>
+
+    <h1>Who's cooking</h1>
+    <div class="chefs">
+      {{#each chefs}}
+      <div class="card" data-eater="{{_id}}">
+        <h1>{{name}}</h1>
+        {{> photoFrame this}}
+      </div>
+      {{/each}}
     </div>
     <div class="form-group">
       <label>What's for lunch?</label>
-      <input type="text" class="mealDish form-control">
+      <input type="text" class="mealDish form-control" required='required'>
     </div>
     <div class="form-group guests">
       <label>Any guests?</label>
@@ -26,7 +29,7 @@
     </div>
     <div class="form-group date">
       <label>Date?</label>
-      <input type="date" class="mealDate form-control" value="{{todaysDate}}"/>
+      <input type="date" class="mealDate form-control" value="{{todaysDate}}" required='required'/>
     </div>
     <div class="form-group">
       <button class="btn">Add</button>

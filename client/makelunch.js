@@ -41,6 +41,17 @@ Meteor.startup(function () {
       }
     })
 
+    // Add route to body
+    var routes = Router.routes.map(function(r){return r.name}).join(' ')
+    Deps.autorun(function(){
+      var $body = $('body')
+      $body.removeClass(routes)
+      var currentRoute = Router.current()
+      if (currentRoute && currentRoute.route && currentRoute.route.name){
+        $body.addClass(currentRoute.route.name)
+      }
+    })
+
   })// end router.map
   
   //registerHelpers
@@ -92,74 +103,6 @@ function score (person){
   return person.servings.given - person.servings.received
 }
 
-function resetHomepage () {
-  $("body").removeClass()
-  $(".deck .card").removeClass("eating chef")
-  $("input").val("")
-}
-
-function enterAddMealMode () {
-  console.log("> Enter add meal mode")
-  $("body").addClass("adding-meal adding-eaters")
-
-  $(".adding-meal .card").off("click")
-  $(".adding-meal .card").on("click", function () {
-    $(this).toggleClass("eating")
-  })
-
-  $(".adding-meal button.next").off()
-  $(".adding-meal button.next").on("click", function () {
-    doneChoosingEaters()
-  })
-}
-
-function doneChoosingEaters () {
-  console.log("> Enter add chef mode")
-  $("body").removeClass("adding-eaters").addClass("adding-chefs")
-  $(".adding-meal .card").off("click")
-  $(".adding-meal .card").on("click", function () {
-    $(this).toggleClass("chef")
-  })
-
-  $(".adding-meal.adding-chefs button.next").off()
-  $(".adding-meal.adding-chefs button.next").on("click", function () {
-    doneChoosingChef()
-  })
-}
-
-function doneChoosingChef () {
-  $("body").removeClass("adding-chefs").addClass("adding-meal-details")
-  $(".adding-meal-details button.save").on("click", function () {
-    doneDescribingMeal()
-  })
-}
-
-function doneDescribingMeal () {
-  insertMeal()
-}
-
-function insertMeal() {
-  var meal = {
-    date: $('.mealDate').val(),
-    chef: filterPeople("chef"),
-    eaters: filterPeople("eating"),
-    guests: parseInt($('.mealGuests').val(), 10),
-    dish: $('.mealDish').val()
-  }
-  console.log(meal)
-  Meals.insert(meal)
-  showFeedback("Meal added")
-  resetHomepage()
-}
-
-function filterPeople (cssClass) {
-  var people = []
-  $("."+cssClass).each(function (i, el) {
-    people.push($(el).attr("data-person-id"))
-  })
-  return people
-}
-
 function showFeedback (text) {
   var feedback = $("#feedback")
   feedback.show()
@@ -182,30 +125,8 @@ Template.home.todaysDate = function () {
 }
 
 Template.card.events({
-  'click': function(evt, tpl){
-
-    var $this = $(tpl.firstNode)
-    var data = this
-
-    $this.pep({
-      constrainTo: 'window',
-      droppable: '.drop',
-      revert: true,
-      revertIf: function(ev, obj){
-        return !this.activeDropRegions.length
-      },
-      stop: function(ev, obj){
-        if (obj.activeDropRegions.length > 0) {
-          if (obj.activeDropRegions[0].hasClass('rye')){
-//            console.log('rye', data)
-            Eaters.update(data._id, { $set: {status: 'rye'}})
-          }
-          if (obj.activeDropRegions[0].hasClass('deck')){
-//            console.log('deck', data)
-            Eaters.update(data._id, { $set: {status: 'jail'}})
-          }
-        }
-      }
-    } )
+  'dblclick .card': function(evt, tpl){
+    var newStatus = (this.status !== 'rye') ? 'rye' : 'jail'
+    Eaters.update(this._id, { $set: {status: newStatus}})
   }
 })

@@ -126,8 +126,31 @@ table .photoFrame img{
 .good .score:before{
   content: "+"
 }
-.adding-meal .score{
-  display: none;
+body.addmeal .card{
+  opacity: 0.2;
+}
+body.addmeal .card:hover{
+  opacity: 0.5;
+}
+body.addmeal .card.eating{
+  opacity: 1;
+}
+body.addmeal .card.chef{
+  opacity: 1;
+}
+body.addmeal .card.chef .photoFrame{
+  position: relative;
+}
+body.addmeal .card.chef .photoFrame:after{
+  content: " ";
+  display: block;
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: url(img/chef.png);
+  background-size: cover;
 }
 
 .rye{
