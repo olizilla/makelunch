@@ -4,15 +4,12 @@ Template.addperson.events = {
 
     var person = {
       name: tpl.find('.personName').value,
-      img: tpl.find('.personImg').value
+      img: tpl.find('.personImg').value,
+      auth: tpl.find('.twitterHandle').value
     }
     console.log(person)
     Eaters.create(person)
     showFeedback("Added " + person.name)
     tpl.find('form').reset()
-  },
-
-  'rendered': function (evt, tpl) {
-    if (logins) console.log(logins)
   }
 }

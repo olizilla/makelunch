@@ -11,6 +11,7 @@ Eaters.create = function(opts){
   if(typeof opts.name != 'string' || opts.name === '' || opts.name.match(/^\s+$/)  ) throw new Error("name not string")
   opts.status = opts.status || 'jail'
   opts.servings = opts.servings || {'given':0,'received':0}
+  opts.auth = {twitter: opts.auth.twitter, email: opts.auth.email }
   return Eaters.insert(opts)
 }
 
