@@ -25,7 +25,14 @@ Meteor.startup(function () {
       }
     })
 
-    this.route('addperson')
+    this.route('addperson', {
+      path:'/addperson',
+      data: function () {
+        return {
+          logins: Meteor.users.find('twitter.screenName')
+        }
+      }
+    })
 
     this.route('meals', {
       path:'/meals',

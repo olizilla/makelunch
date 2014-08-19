@@ -10,5 +10,9 @@ Template.addperson.events = {
     Eaters.create(person)
     showFeedback("Added " + person.name)
     tpl.find('form').reset()
+  },
+
+  'rendered': function (evt, tpl) {
+    if (logins) console.log(logins)
   }
 }
