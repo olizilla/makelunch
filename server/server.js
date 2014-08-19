@@ -11,6 +11,7 @@ Meteor.startup(function () {
   //TODO: prevent editing from anonymous users
   Eaters.allow({
     insert: function (userId, doc) {
+      console.log(userId)
       if(!doc.servings){
         doc.servings = { given:0, received: 0 }
         doc.mealsCooked = 0
