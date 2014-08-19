@@ -11,7 +11,7 @@ Meteor.startup(function () {
   //TODO: prevent editing from anonymous users
   Eaters.allow({
     insert: function (userId, doc) {
-      console.log(userId)
+      if(!userId) return false
       if(!doc.servings){
         doc.servings = { given:0, received: 0 }
         doc.mealsCooked = 0
@@ -19,6 +19,7 @@ Meteor.startup(function () {
       return true
     },
     update: function (userId, doc) {
+      if(!userId) return false
       return true
     }
     // TODO: no deleting, just add a flag to hide if needed.
@@ -27,10 +28,12 @@ Meteor.startup(function () {
 
   Meals.allow({
     insert:function (userId, doc) {
+      if(!userId) return false
       updateStats(doc)
       return true
     },
     update: function (userId, doc) {
+      if(!userId) return false
       return true;
     }
   })
