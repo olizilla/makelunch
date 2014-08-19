@@ -1,0 +1,55 @@
+<template name="home">
+  <h1 class="welcome">{{> today}}</h1>
+  {{> deck}}
+  {{> rye }}
+</template>
+
+<template name="today">
+  {{date}} - Chef of the day: <span id="chef">{{whoShouldCook.name}}</span>
+</template>
+
+<template name="deck">
+  <div class="deck drop">
+    {{#each eaters}}
+      {{> card }}
+    {{/each}}
+  </div>
+</template>
+
+<template name="rye">
+  <div class="rye drop">
+    <h1>On the Rye</h1>
+    {{#each mia}}
+      {{> card }}
+    {{/each}}
+  </div>
+</template>
+
+<template name="card">
+  <div class="card{{#if eating}} eating{{/if}} {{scoreSummary this}}" data-person-id="{{_id}}">
+    <h1>{{name}} <span class="score">{{ score this }}</span></h1>
+    {{> photoFrame this}}
+    <ul class="stats">
+      <li>
+        <label>Servings</label>
+        <span>{{servings.given}} : {{servings.received}}</span>
+      </li>
+      <li>
+        <label>Last ate</label>
+        {{#if lastEaten}}
+        <span title="{{lastEaten}}">{{fromNow lastEaten}}</span>
+        {{else}}
+        <span title="Never">Never</span>
+        {{/if}}
+      </li>
+      <li>
+        <label>Last cooked</label>
+        {{#if lastCooked}}
+        <span title="{{lastCooked}}">{{fromNow lastCooked}}</span>
+        {{else}}
+        <span title="Never">Never</span>
+        {{/if}}
+      </li>
+    </ul>
+  </div>
+</template>

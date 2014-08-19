@@ -5,7 +5,9 @@
       "iron-router": {},
       "moment": {},
       "crypto-md5": {},
-      "select2": {}
+      "select2": {},
+      "mocha-web-velocity": {},
+      "velocity-html-reporter": {}
     },
     "packages": {
       "iron-router": {
@@ -28,6 +30,16 @@
         "tag": "v3.4.5",
         "commit": "4a8d05582b949a14f0ee217c185166abbf112822"
       },
+      "mocha-web-velocity": {
+        "git": "https://github.com/mad-eye/meteor-mocha-web.git",
+        "tag": "v0.3.4",
+        "commit": "5b68e18104c00687748b190b04a7752478472d17"
+      },
+      "velocity-html-reporter": {
+        "git": "https://github.com/rdickert/velocity-html-reporter.git",
+        "tag": "v0.1.4",
+        "commit": "55f973519fb6db831678219057854b94a4cec846"
+      },
       "iron-layout": {
         "git": "https://github.com/EventedMind/iron-layout.git",
         "tag": "v0.2.0",
@@ -37,6 +49,16 @@
         "git": "https://github.com/oortcloud/meteor-crypto-base.git",
         "tag": "v3.1.2.1",
         "commit": "5df8d82a0595553415bbfae2930c6ecbeece5794"
+      },
+      "mirror": {
+        "git": "https://github.com/xdissent/meteor-mirror.git",
+        "tag": "v0.0.2",
+        "commit": "03d965dcab2f976a1fdc6ce513edcd4c17b75746"
+      },
+      "velocity": {
+        "git": "https://github.com/xolvio/velocity.git",
+        "tag": "v0.1.18",
+        "commit": "1958c117417e832c3e9025088cca845b4a82728f"
       },
       "blaze-layout": {
         "git": "https://github.com/EventedMind/blaze-layout.git",

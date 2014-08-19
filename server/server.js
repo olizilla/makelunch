@@ -100,5 +100,8 @@ function resetStats () {
 Meteor.methods({
   resetStats: function () {
     resetStats()
+  },
+  goToJail: function () {
+    Eaters.update({}, {$set: {status: 'jail'}}, {multi:true})
   }
 })

@@ -4,10 +4,13 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-insecure
 accounts-password
 accounts-ui
 iron-router
 moment
 crypto-md5
 select2
+
+mocha-web-velocity
+velocity-html-reporter
+accounts-twitter

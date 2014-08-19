@@ -1,0 +1,61 @@
+<template name="addmeal">
+  <form class="addMeal">
+    <h1>Who's eating?</h1>
+    <div class="mealEaters">
+      {{#each people}}
+        <div class="card" data-eater="{{_id}}">
+          <h1>{{name}}</h1>
+          {{> photoFrame this}}
+        </div>
+      {{/each}}
+    </div>
+
+    <h1>Who's cooking</h1>
+    <div class="chefs">
+      {{#each chefs}}
+      <div class="card" data-eater="{{_id}}">
+        <h1>{{name}}</h1>
+        {{> photoFrame this}}
+      </div>
+      {{/each}}
+    </div>
+    <div class="form-group">
+      <label>What's for lunch?</label>
+      <input type="text" class="mealDish form-control" required='required'>
+    </div>
+    <div class="form-group guests">
+      <label>Any guests?</label>
+      <input type="number" min="0" step="1" value="0" class="mealGuests form-control"/>
+    </div>
+    <div class="form-group date">
+      <label>Date?</label>
+      <input type="date" class="mealDate form-control" value="{{todaysDate}}" required='required'/>
+    </div>
+    <div class="form-group">
+      <button class="btn">Add</button>
+    </div>
+  </form>
+</template>
+
+<!-- not wired up -->
+<template name="nuaddmeal">
+  <div class="add-meal-hint">
+    <h2 class="add-eaters-hint">Who ate? (including chef)</h2>
+    <h2 class="add-chefs-hint">Who cooked?</h2>
+    <h2 class="add-meal-details-hint">What did they cook?</h2>
+    <button class="next btn">Next</button>
+    <button class="save btn fa fa-check">Save</button>
+    <button class="cancel btn pull-right fa fa-times">Cancel</button>
+    <div class="meal-details">
+      <div class="form-group dish">
+        <label for="mealDish">Dish</label>
+        <input class="mealDish form-control" id="mealDish" type="text" />
+      </div>
+      <br>
+      <div class="form-group date">
+        <label for="mealDate">Date</label>
+        <input class="mealDate form-control" id="mealDate" type="date" value="{{todaysDate}}"/>
+      </div>
+    </div>
+  </div>
+</template>

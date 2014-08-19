@@ -3,37 +3,40 @@ Meteor.subscribe('eaters')
 Meteor.startup(function () {
 
   Router.map(function () {
-    
-    this.route('home', { 
+
+    this.route('home', {
       path:'/' ,
       data: function () {
         return {
-          people: Eaters.find({}).fetch()
-            .map(function (e) {
-              e.img = e.img || "http://www.gravatar.com/avatar/" + CryptoJS.MD5(e.name) + "?s=300&d=monsterid"
-              return e
-            })
-            .sort(scoreSort),
+          eaters: Eaters.find({status:'jail'}).fetch().sort(scoreSort),
+          mia: Eaters.find({status:'rye'}).fetch(),
           date: todaysDate(),
           whoShouldCook: whoShouldCook()
         }
       }
     })
-    
-    this.route('addmeal', { 
+
+    this.route('addmeal', {
       path:'/addmeal',
       data: function () {
         return {
-          people: Eaters.find({})
+          people: Eaters.find({status:'jail'})
         }
       }
     })
 
-    this.route('addperson')
+    this.route('addperson', {
+      path:'/addperson',
+      data: function () {
+        return {
+          logins: Meteor.users.find('twitter.screenName')
+        }
+      }
+    })
 
     this.route('meals', {
       path:'/meals',
-      before: [
+      onBeforeAction: [
         function () {
           this.subscribe('meals')
         }
@@ -45,15 +48,28 @@ Meteor.startup(function () {
       }
     })
 
-  })// end router.map
+    // Add route to body
+    var routes = Router.routes.map(function(r){return r.name}).join(' ')
+    Deps.autorun(function(){
+      var $body = $('body')
+      $body.removeClass(routes)
+      var currentRoute = Router.current()
+      if (currentRoute && currentRoute.route && currentRoute.route.name){
+        $body.addClass(currentRoute.route.name)
+      }
+    })
 
+  })// end router.map
+  
+  //registerHelpers
+  UI.registerHelper('scoreSummary', Eaters.scoreSummary)
 })// end Meteor.startup
 
-Handlebars.registerHelper('fromNow', function (date) {
+UI.registerHelper('fromNow', function (date) {
   return moment(date + 'T12:00').fromNow()
 })
 
-Handlebars.registerHelper('profile', function (userId) {
+UI.registerHelper('profile', function (userId) {
   var eater = Eaters.findOne(userId)
   eater.img = eater.img || "http://www.gravatar.com/avatar/" + CryptoJS.MD5(eater.name) + "?s=300&d=monsterid"
   return eater
@@ -63,12 +79,6 @@ UI.registerHelper('score', function (eater) {
   return eater.servings.given - eater.servings.received
 })
 
-UI.registerHelper('scoreSummary', function (eater) {
-  var score = eater.servings.given - eater.servings.received
-  if (score === 0) return "perfect"
-  if (score > 0) return "good"
-  if (score < 0) return "bad"
-})
 
 function scoreSort (a, b) {
   if (score(a) === score(b)) {
@@ -100,79 +110,6 @@ function score (person){
   return person.servings.given - person.servings.received
 }
 
-function resetHomepage () {
-  $("body").removeClass()
-  $(".deck .card").removeClass("eating chef")
-  $("input").val("")
-}
-
-function addMealFormSelect2 () {
-  $(".mealChef").select2({formatNoMatches: function () {return ""}})
-  $(".mealEaters").select2({formatNoMatches: function () {return ""}})
-}
-
-function enterAddMealMode () {
-  console.log("> Enter add meal mode")
-  $("body").addClass("adding-meal adding-eaters")
-
-  $(".adding-meal .card").off("click")
-  $(".adding-meal .card").on("click", function () {
-    $(this).toggleClass("eating")
-  })
-
-  $(".adding-meal button.next").off()
-  $(".adding-meal button.next").on("click", function () {
-    doneChoosingEaters()
-  })
-}
-
-function doneChoosingEaters () {
-  console.log("> Enter add chef mode")
-  $("body").removeClass("adding-eaters").addClass("adding-chefs")
-  $(".adding-meal .card").off("click")
-  $(".adding-meal .card").on("click", function () {
-    $(this).toggleClass("chef")
-  })
-
-  $(".adding-meal.adding-chefs button.next").off()
-  $(".adding-meal.adding-chefs button.next").on("click", function () {
-    doneChoosingChef()
-  })
-}
-
-function doneChoosingChef () {
-  $("body").removeClass("adding-chefs").addClass("adding-meal-details")
-  $(".adding-meal-details button.save").on("click", function () {
-    doneDescribingMeal()
-  })
-}
-
-function doneDescribingMeal () {
-  insertMeal()
-}
-
-function insertMeal() {
-  var meal = {
-    date: $('.mealDate').val(),
-    chef: filterPeople("chef"),
-    eaters: filterPeople("eating"),
-    guests: parseInt($('.mealGuests').val(), 10),
-    dish: $('.mealDish').val()
-  }
-  console.log(meal)
-  Meals.insert(meal)
-  showFeedback("Meal added")
-  resetHomepage()
-}
-
-function filterPeople (cssClass) {
-  var people = []
-  $("."+cssClass).each(function (i, el) {
-    people.push($(el).attr("data-person-id"))
-  })
-  return people
-}
-
 function showFeedback (text) {
   var feedback = $("#feedback")
   feedback.show()
@@ -190,37 +127,13 @@ function showFeedback (text) {
   })(0)
 }
 
-Template.home.rendered = function () {
-  console.log("home")
-  $(".add-meal").off("click")
-  $(".add-meal").on("click", function (e) {
-    e.preventDefault()
-    enterAddMealMode()
-  })
-  $(".add-meal-hint .btn.cancel").on("click", function () {
-    resetHomepage()
-  })
-}
-
 Template.home.todaysDate = function () {
   return todaysDate()
 }
 
-Template.addmeal.rendered = function() {
-  addMealFormSelect2()
-}
-
-Template.addperson.events = {
-  'submit': function (evt, tpl) {
-    evt.preventDefault();
-
-    var person = {
-      name: tpl.find('.personName').value,
-      img: tpl.find('.personImg').value
-    }
-    console.log(person)
-    Eaters.insert(person)
-    showFeedback("Added " + person.name)
-    tpl.find('form').reset()
+Template.card.events({
+  'dblclick .card': function(evt, tpl){
+    var newStatus = (this.status !== 'rye') ? 'rye' : 'jail'
+    Eaters.update(this._id, { $set: {status: newStatus}})
   }
-}
+})
