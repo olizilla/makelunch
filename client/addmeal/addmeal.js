@@ -1,5 +1,3 @@
-EatingToday = new Meteor.Collection()
-
 Template.addmeal.events({
   'submit': function (evt, tpl) {
     evt.preventDefault()
@@ -13,28 +11,17 @@ Template.addmeal.events({
     }
 
     console.log(meal)
-    Meals.insert(meal)
-    Router.go('meals')
+    //Meals.insert(meal)
+    //Router.go('meals')
   },
-  'click .chefs .card': function(evt, tpl) {
+  'dblclick .mealEaters .card': function(evt, tpl) {
     var card = $(evt.currentTarget)
+    console.log(card)
     card.toggleClass('chef')
+    card.addClass('eating')
   },
   'click .mealEaters .card': function (evt, tpl) {
     var card = $(evt.currentTarget)
-    if (card.hasClass('eating')) {
-      EatingToday.remove(this._id)
-    } else {
-      EatingToday.insert(this)
-    }
     card.toggleClass('eating')
   }
 })
-
-Template.addmeal.chefs = function () {
-  return EatingToday.find()
-}
-
-Template.addmeal.rendered = function () {
-  EatingToday.remove()
-}
