@@ -11,6 +11,7 @@
       </a>
     </h1>
     <nav>
+      {{#if currentUser }}
       <a href="/addmeal" class="add-meal">
         <i class="fa fa-pencil"></i>
         <span>Log a meal</span>
@@ -19,6 +20,7 @@
         <i class="fa fa-plus-circle"></i>
         <span>Add someone</span>
       </a>
+      {{/if}}
       <a href="/meals">
         <i class="fa fa-th-list"></i>
         <span>Meals past</span>
