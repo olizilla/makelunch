@@ -57,7 +57,9 @@ header .login-panel {
 header .login-panel #login-dropdown-list {
   left: -150px;
 }
-
+header .login-panel .or, header .login-panel .login-password-form {
+  display: none;
+}
 #chef {
   color: rgb(24,49,96);
 }
