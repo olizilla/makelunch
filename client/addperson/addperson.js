@@ -2,11 +2,14 @@ Template.addperson.events = {
   'submit': function (evt, tpl) {
     evt.preventDefault();
 
+    var twitterHandle = tpl.find('.twitterHandle').value
+    twitterHandle = twitterHandle.trim().toLowerCase().replace('@' , '')
+
     var person = {
       name: tpl.find('.personName').value,
       img: tpl.find('.personImg').value,
       auth: {
-        twitter: tpl.find('.twitterHandle').value.toLowerCase(),
+        twitter: twitterHandle,
         email: null
       }
     }
