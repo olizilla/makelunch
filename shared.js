@@ -12,6 +12,7 @@ Eaters.create = function(opts){
   opts.status = opts.status || 'jail'
   opts.servings = opts.servings || {'given':0,'received':0}
   opts.auth = {twitter: opts.auth.twitter, email: opts.auth.email }
+  console.log(opts)
   return Eaters.insert(opts)
 }
 

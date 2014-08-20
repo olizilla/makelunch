@@ -108,3 +108,10 @@ Meteor.methods({
     Eaters.update({}, {$set: {status: 'jail'}}, {multi:true})
   }
 })
+
+Accounts.validateLoginAttempt(function (info) {
+  var screenName = info.user.services.twitter.screenName.toLowerCase()
+  var eaters = Eaters.find({ 'auth.twitter': screenName }).fetch()
+  if(eaters.length === 0) return false
+  return true
+})
