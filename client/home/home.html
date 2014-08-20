@@ -1,7 +1,9 @@
 <template name="home">
-  <h1 class="welcome">{{> today}}</h1>
-  {{> deck}}
-  {{> rye }}
+  <div class="row">
+    <h1 class="welcome">{{> today}}</h1>
+    {{> deck}}
+    {{> rye }}
+  </div>
 </template>
 
 <template name="today">
@@ -9,25 +11,34 @@
 </template>
 
 <template name="deck">
-  <div class="deck drop">
-    {{#each eaters}}
-      {{> card }}
-    {{/each}}
+  <div class="row">
+    <div class="deck drop">
+      {{#each eaters}}
+        {{> card }}
+      {{/each}}
+    </div>
   </div>
 </template>
 
 <template name="rye">
-  <div class="rye drop">
-    <h1>On the Rye</h1>
-    {{#each mia}}
-      {{> card }}
-    {{/each}}
+  <div class="row">
+    <div class="rye drop">
+      <h1>On the Rye</h1>
+      {{#each mia}}
+        {{> card }}
+      {{/each}}
+    </div>
   </div>
 </template>
 
 <template name="card">
   <div class="card{{#if eating}} eating{{/if}} {{scoreSummary this}}" data-person-id="{{_id}}">
-    <h1>{{name}} <span class="score">{{ score this }}</span></h1>
+    <h1>{{name}} 
+      {{#if currentUser}}
+        <a href="/editperson/{{ _id }}"><i class="fa fa-pencil"></i></a> 
+      {{/if}}   
+      <span class="score">{{ score this }}</span>
+    </h1>
     {{> photoFrame this}}
     <ul class="stats">
       <li>

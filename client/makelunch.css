@@ -310,8 +310,6 @@ button.save, button.next {
 }
 .form-control, .select2-container-multi .select2-choices .select2-search-field input {
   display: block;
-  width: 90%;
-  max-width: 500px;
   height: 34px;
   padding: 6px 12px;
   font-size: 20px;
@@ -361,79 +359,6 @@ input[type="date"].form-control{
   width: 40%;
 }
 
-.select2 {
-  background-color: transparent;
-  background-image: none;
-}
-.select2-container-multi {
-  max-width: 520px;
-  height: auto;
-  min-height: 36px;
-  padding: 0;
-}
-.select2-container-multi .select2-choices .select2-search-field {
-  margin: -5px 0 0 -3px;
-}
-.select2-container-multi .select2-choices {
-  min-height: 26px;
-  background-color: transparent;
-  background-image: none;
-  border: none;
-}
-.select2-container-multi.select2-container-active .select2-choices {
-  border: none;
-  box-shadow: none;
-  -webkit-box-shadow: none;
-}
-.select2-drop {
-  background-color: rgba(24,49,96,0.9);
-  border: none;
-  border-top: 1px solid white;  
-  padding: 6px;
-  color: white;
-  box-shadow: none;
-  -webkit-box-shadow: none;
-}
-.select2-results .select2-no-results,
-.select2-results .select2-searching,
-.select2-results .select2-selection-limit {
-  background-color: transparent;
-}
-.select2-results .select2-highlighted {
-  background-color: transparent;
-  border-left: 2px solid white;
-}
-.select2-container-multi .select2-choices .select2-search-choice {
-  background: transparent;
-  border: none;
-  color: white;
-  box-shadow: none;
-  padding: 10px 0 10px 24px;
-}
-.select2-search-choice-close {
-  display: block;
-  color: white;
-  position: absolute;
-  right: 3px;
-  top: 5px;
-  font-size: 20px;
-  outline: none;
-  background: transparent;
-}
-.select2-search-choice-close:before {
-  content: "\f068";
-  display: inline-block;
-  font-family: FontAwesome;
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.select2-search-choice-close:hover:before {
-  content: "\f146";
-}
 
 @media all and (max-width: 1000px) {
   .adding-meal-details .meal-details {

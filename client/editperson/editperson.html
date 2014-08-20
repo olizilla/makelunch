@@ -1,0 +1,30 @@
+<template name="editperson">
+  <div class="container">
+    <h1>Edit {{ name }}</h1>
+    <form class="col-md-6">
+      <div class="form-group">
+        <label>Name</label>
+        <input class="form-control personName" type="text" value="{{ name }}" />
+      </div>
+      
+      <div class="form-group">
+        <label>Twitter Handle</label>
+        <input class="form-control twitterHandle" type="text" value="{{ auth.twitter }}" />
+      </div>
+
+      <div class="editimg">
+        <img src="{{ img }}" />
+      </div>
+
+      <div class="form-group">
+        <label>Photo url</label>
+        <input class="form-control personImg" type="url" value="{{ img }}" />
+      </div>
+      <div class="form-group">
+        <button class="btn">Save</button>
+      </div>
+    </form>
+
+    
+  </div>
+</template>
