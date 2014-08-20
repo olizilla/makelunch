@@ -410,13 +410,16 @@ input[type="date"].form-control{
   body.addmeal .card {
     position: relative;
     width: 100%;
-    margin: 1em 0;
+    margin: 0.5em 0;
     padding: 10px;
+    opacity: 0.5;
+  }
+  body.addmeal .card:not(.eating):hover {
+    opacity: 0.5;
   }
   body.addmeal .card h1{
     float: right;
   }
-
   body.addmeal .photoFrame {
     width: 50%;
     padding: 0;
@@ -425,13 +428,10 @@ input[type="date"].form-control{
     display: block;
     width: 100%;
     max-width: 100%;
-    margin: 2em 0;
+    margin: 1em 0;
   }
   body.addmeal .form-group input {
     width: 100%;
-  }
-  body.addmeal .card:not(.eating):hover {
-    opacity: 0.2;
   }
   body.addmeal .card.chef {
     background-image: url(img/chef.png);
@@ -446,8 +446,9 @@ input[type="date"].form-control{
     text-align: center;
   }
   body.addmeal .form-group.submit .btn {
-    width: 80%;
+    width: 100%;
     font-size: 32px;
     padding: 20px;
+    margin: 0;
   }
 } 

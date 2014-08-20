@@ -1,0 +1,30 @@
+<template name="editmeal">
+  <form class="editMeal">
+    <h1>Editing meal for {{date}}</h1>
+    <h2>Who's eating?</h2>
+    <div class="mealEaters">
+      {{#each people}}
+        <div class="card" data-eater="{{_id}}">
+          <h1>{{name}}</h1>
+          {{> photoFrame this}}
+        </div>
+      {{/each}}
+    </div>
+    <div class="form-group">
+      <label>What's for lunch?</label>
+      <input type="text" class="mealDish form-control" required='required'>
+    </div>
+    <div class="form-group guests">
+      <label>Any guests?</label>
+      <input type="number" min="0" step="1" value="0" class="mealGuests form-control"/>
+    </div>
+    <div class="form-group date">
+      <label>Date?</label>
+      <input type="date" class="mealDate form-control" value="{{todaysDate}}" required='required'/>
+    </div>
+    <div class="form-group submit">
+      <button class="btn">Add</button>
+    </div>
+  </form>
+  <span>{{meal}}</span>
+</template>

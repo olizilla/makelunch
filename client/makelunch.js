@@ -22,8 +22,18 @@ Meteor.startup(function () {
       path:'/addmeal',
       data: function () {
         return {
-          people: Eaters.find({status:'jail'})
+          people: Eaters.find({status:'jail'}),
         }
+      }
+    })
+
+    this.route('editmeal', {
+      path:'/editmeal/:_id',
+      data: function () {
+        return Meals.findOne({_id: this.params._id})
+
+          //people: Eaters.find({status:'jail'}),
+        
       }
     })
 

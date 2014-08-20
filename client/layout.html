@@ -7,7 +7,7 @@
 <body>
   <header>
     <h1>
-      <a href="/">
+      <a href="/" class="logo">
         <img src="http://jailmake.com/wp-content/themes/jail_2_2/img/jail_header_140_type.png">
       </a>
     </h1>
@@ -26,12 +26,14 @@
         <i class="fa fa-th-list"></i>
         <span>Meals past</span>
       </a>
+      {{#unless currentUser }}
+      <div class="login-panel">
+        <i class="fa fa-twitter"></i>
+        {{> loginButtons}}
+      </div>
+      {{/unless}}
     </nav>
     <span id="feedback"></span>
-    <div class="login-panel">
-      <i class="fa fa-twitter"></i>
-      {{> loginButtons}}
-    </div>
   </header>
 <!-- router append content to body by default. Use `renderRouter` helper to move it elsewhere -->
 </body>
