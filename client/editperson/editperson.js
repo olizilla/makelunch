@@ -1,7 +1,7 @@
-Template.addperson.events = {
+Template.editperson.events = {
   'submit': function (evt, tpl) {
     evt.preventDefault();
-
+    var id = tpl.find('.personId').value
     var person = {
       name: tpl.find('.personName').value,
       img: tpl.find('.personImg').value,
@@ -10,9 +10,8 @@ Template.addperson.events = {
         email: null
       }
     }
-    console.log(person)
-    Eaters.create(person)
-    //showFeedback("Added " + person.name)
-    tpl.find('form').reset()
+
+    Eaters.foo( id , person )
+
   }
 }

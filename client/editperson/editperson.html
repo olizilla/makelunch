@@ -2,6 +2,7 @@
   <div class="container">
     <h1>Edit {{ name }}</h1>
     <form class="col-md-6">
+      <input class="personId" type="hidden" value="{{ _id }}" >
       <div class="form-group">
         <label>Name</label>
         <input class="form-control personName" type="text" value="{{ name }}" />
