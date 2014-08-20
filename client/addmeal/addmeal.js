@@ -11,8 +11,8 @@ Template.addmeal.events({
     }
 
     console.log(meal)
-    //Meals.insert(meal)
-    //Router.go('meals')
+    Meals.insert(meal)
+    Router.go('meals')
   },
   'dblclick .mealEaters .card': function(evt, tpl) {
     var card = $(evt.currentTarget)
