@@ -47,6 +47,17 @@ header #feedback {
   width: 250px;
   color: white;
 }
+
+header .login-panel {
+  float: right;
+  color: white;
+  margin: 32px;
+  font-size: 24px;
+}
+header .login-panel #login-dropdown-list {
+  left: -150px;
+}
+
 #chef {
   color: rgb(24,49,96);
 }
@@ -90,6 +101,18 @@ table .photoFrame{
 table .photoFrame img{
   min-width: 80px;
   max-width: 128px;
+}
+.card .btn-editperson {
+  display: none;
+}
+.card:hover .btn-editperson {
+  display: inline;
+}
+.card .btn-editperson i {
+  line-height: 0.8;
+}
+.card .btn-editperson {
+  color: white;
 }
 .card .stats{
   background: white;

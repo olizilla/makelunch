@@ -14,11 +14,6 @@ Eaters.create = function(opts){
   return Eaters.insert(opts)
 }
 
-Eaters.foo = function( id, person ){
-  console.log(person)
-  Eaters.update( id , {$set: person } )
-}
-
 Eaters.scoreSummary = function(eater){
   if(!eater) return null
   var score = eater.servings.given - eater.servings.received

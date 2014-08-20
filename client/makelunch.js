@@ -1,3 +1,5 @@
+MakeLunch = {} // our global for helpers
+
 Meteor.subscribe('eaters')
 
 Meteor.startup(function () {
@@ -110,7 +112,7 @@ function score (person){
   return person.servings.given - person.servings.received
 }
 
-function showFeedback (text) {
+MakeLunch.showFeedback = function showFeedback (text) {
   var feedback = $("#feedback")
   feedback.show()
   feedback.text("> ");

@@ -34,3 +34,7 @@ Template.addmeal.events({
 Template.addmeal.chefs = function () {
   return EatingToday.find()
 }
+
+Template.addmeal.rendered = function () {
+  EatingToday.remove()
+}

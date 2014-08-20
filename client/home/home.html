@@ -35,7 +35,7 @@
   <div class="card{{#if eating}} eating{{/if}} {{scoreSummary this}}" data-person-id="{{_id}}">
     <h1>{{name}} 
       {{#if currentUser}}
-        <a href="/editperson/{{ _id }}"><i class="fa fa-pencil"></i></a> 
+        <a class="btn-editperson" href="/editperson/{{ _id }}"><i class="fa fa-pencil"></i></a> 
       {{/if}}   
       <span class="score">{{ score this }}</span>
     </h1>
