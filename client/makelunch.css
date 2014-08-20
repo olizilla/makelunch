@@ -4,6 +4,10 @@
   src: url(/JAILcopy.ttf);
 }
 
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
 body {
   font-family: JAILcopy, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
   background: #EEE;
@@ -402,5 +406,45 @@ input[type="date"].form-control{
 @media all and (max-width: 768px) {
   header nav a span {
     display: none;
+  }
+  body.addmeal .card {
+    position: relative;
+    width: 100%;
+    margin: 1em 0;
+    padding: 10px;
+  }
+  body.addmeal .card h1{
+    float: right;
+  }
+
+  body.addmeal .photoFrame {
+    width: 50%;
+    padding: 0;
+  }
+  body.addmeal .form-group {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 2em 0;
+  }
+  body.addmeal .form-group input {
+    width: 100%;
+  }
+  body.addmeal .card.chef {
+    background-image: url(img/chef.png);
+    background-size: auto 80%;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+  }
+  body.addmeal .card.chef .photoFrame:after {
+    display: none;
+  }
+  body.addmeal .form-group.submit {
+    text-align: center;
+  }
+  body.addmeal .form-group.submit .btn {
+    width: 80%;
+    font-size: 32px;
+    padding: 20px;
   }
 } 

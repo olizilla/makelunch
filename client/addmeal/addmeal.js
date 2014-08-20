@@ -14,14 +14,13 @@ Template.addmeal.events({
     Meals.insert(meal)
     Router.go('meals')
   },
-  'dblclick .mealEaters .card': function(evt, tpl) {
-    var card = $(evt.currentTarget)
-    console.log(card)
-    card.toggleClass('chef')
-    card.addClass('eating')
-  },
+
   'click .mealEaters .card': function (evt, tpl) {
     var card = $(evt.currentTarget)
-    card.toggleClass('eating')
+    console.log(card.attr('class'))
+
+    if (card.hasClass('chef')) card.removeClass('chef eating') 
+      else if (card.hasClass('eating')) card.addClass('chef')
+      else if (!card.hasClass('eating')) card.addClass('eating')
   }
 })

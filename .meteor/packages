@@ -12,5 +12,5 @@ crypto-md5
 select2
 
 mocha-web-velocity
-velocity-html-reporter
 accounts-twitter
+velocity-html-reporter
