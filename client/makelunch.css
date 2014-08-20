@@ -430,6 +430,9 @@ input[type="date"].form-control{
   body.addmeal .form-group input {
     width: 100%;
   }
+  body.addmeal .card:not(.eating):hover {
+    opacity: 0.2;
+  }
   body.addmeal .card.chef {
     background-image: url(img/chef.png);
     background-size: auto 80%;
