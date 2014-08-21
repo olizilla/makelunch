@@ -115,7 +115,7 @@ function scoreSort (a, b) {
 }
 
 function whoShouldCook() {
-  var eaters = Eaters.find().fetch()
+  var eaters = Eaters.find({'status':'jail'}).fetch()
   
   eaters.sort(scoreSort)
 
