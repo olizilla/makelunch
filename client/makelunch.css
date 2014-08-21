@@ -182,6 +182,10 @@ body.addmeal .card.chef .photoFrame:after, body.editmeal .card.chef .photoFrame:
   background-size: cover;
 }
 
+body.editmeal .form-group.button .btn.delete.verify::after {
+  content: ' for real?';
+}
+
 .rye{
   min-height:500px;
   background: url(http://fc05.deviantart.net/fs70/i/2010/059/2/6/Green_Grass_Texture_01_by_goodtextures.jpg);
@@ -445,7 +449,7 @@ input[type="date"].form-control{
   body.addmeal .form-group.submit, body.editmeal .form-group.submit , body.editmeal .form-group.button {
     text-align: center;
   }
-  body.addmeal .form-group.submit .btn, body.editmeal .form-group.submit .btn , body.editmeal .form-group.button .btn.delete{
+  body.addmeal .form-group.submit .btn, body.editmeal .form-group.submit .btn , body.editmeal .form-group.button .btn.delete {
     width: 100%;
     font-size: 32px;
     padding: 20px;

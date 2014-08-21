@@ -24,8 +24,11 @@ Template.editmeal.events({
   },
   'click .button .delete': function (evt, tpl) {
     evt.preventDefault()
+    $('.button .delete').addClass('verify')
+  },
+  'click .button .delete.verify': function (evt, tpl) {
+    evt.preventDefault()
     Meals.remove(this.meal._id)
     Router.go('meals')
   }
-
 })
