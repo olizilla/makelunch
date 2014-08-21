@@ -137,12 +137,7 @@ if (!(typeof MochaWeb === 'undefined')){
           eaters: []
         }
         chai.expect( function () {Meals.create(meal)} ).to.throw(Error)
-      }
-    })
-    describe("Testing editing of Meals collection", function () {
-      it('does nothing', function(){
-        return
       })
-    }      
+    })
   });
 }
