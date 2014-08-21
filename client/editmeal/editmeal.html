@@ -1,8 +1,20 @@
 <template name="editmeal">
-  <form class="editMeal">
+  <form class="editmeal">
     <h1>Editing meal for {{meal.date}}</h1>
-    <h2>Who's eating?</h2>
+    <h2>Who ate?</h2>
     <div class="mealEaters">
+      {{#each chefs}}
+        <div class="card eating chef" data-eater="{{_id}}">
+          <h1>{{name}}</h1>
+          {{> photoFrame this}}
+        </div>
+      {{/each}}
+      {{#each eaters}}
+        <div class="card eating" data-eater="{{_id}}">
+          <h1>{{name}}</h1>
+          {{> photoFrame this}}
+        </div>
+      {{/each}}
       {{#each people}}
         <div class="card" data-eater="{{_id}}">
           <h1>{{name}}</h1>
@@ -11,20 +23,19 @@
       {{/each}}
     </div>
     <div class="form-group">
-      <label>What's for lunch?</label>
-      <input type="text" class="mealDish form-control" required='required'>
+      <label>What was for lunch?</label>
+      <input type="text" class="mealDish form-control" value="{{meal.dish}}" required='required'>
     </div>
     <div class="form-group guests">
-      <label>Any guests?</label>
-      <input type="number" min="0" step="1" value="0" class="mealGuests form-control"/>
+      <label>Were there any guests?</label>
+      <input type="number" min="0" step="1" value="{{meal.guests}}" class="mealGuests form-control"/>
     </div>
     <div class="form-group date">
-      <label>Date?</label>
-      <input type="date" class="mealDate form-control" value="{{todaysDate}}" required='required'/>
+      <label>Date</label>
+      <input type="date" class="mealDate form-control" value="{{meal.date}}" required='required'/>
     </div>
     <div class="form-group submit">
-      <button class="btn">Add</button>
+      <button class="btn">Save</button>
     </div>
   </form>
-  <span>{{meal}}</span>
 </template>

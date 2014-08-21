@@ -31,9 +31,13 @@ Meteor.startup(function () {
     this.route('editmeal', {
       path:'/editmeal/:_id',
       data: function () {
+        var meal = Meals.findOne(this.params._id)
+        console.log(meal)
         return {
-          meal: Meals.findOne(this.params._id),
-          people: Eaters.find({status:'jail'})
+          meal: meal,
+          eaters: Eaters.find({_id: {$in: meal.eaters, $nin: meal.chef}}),
+          chefs: Eaters.find({_id: {$in: meal.chef}}),
+          people: Eaters.find({_id: {$nin: meal.eaters}, status: 'jail'})
         }
       }
     })

@@ -31,6 +31,12 @@ Meals.create = function(meal){
   return Meals.insert(meal)
 }
 
+Meals.edit = function(id, meal){
+  if(!meal) throw new Error("No meal provided")
+
+  Meals.update(id, {$set: meal})
+}
+
 // returns todays date as 2014-02-09
 todaysDate = function todaysDate() {
   return new Date().toISOString().split('T')[0]

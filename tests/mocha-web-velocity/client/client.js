@@ -73,7 +73,7 @@ if (!(typeof MochaWeb === 'undefined')){
       })
     })
 
-    describe("Testing CRUD of Meals collection", function () {
+    describe("Testing Creation of Meals collection", function () {
       it('Meals.create should insert an object into the collection', function(){
         chai.expect(Meals.find().fetch().length).to.equal(0)
         var chefId = Eaters.create({name: 'Chef'})
@@ -137,7 +137,12 @@ if (!(typeof MochaWeb === 'undefined')){
           eaters: []
         }
         chai.expect( function () {Meals.create(meal)} ).to.throw(Error)
-      })
+      }
     })
+    describe("Testing editing of Meals collection", function () {
+      it('does nothing', function(){
+        return
+      })
+    }      
   });
 }

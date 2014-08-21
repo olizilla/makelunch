@@ -155,22 +155,22 @@ table .photoFrame img{
 .good .score:before{
   content: "+"
 }
-body.addmeal .card{
+body.addmeal .card, body.editmeal .card{
   opacity: 0.2;
 }
-body.addmeal .card:hover{
+body.addmeal .card:hover, body.editmeal .card:hover{
   opacity: 0.5;
 }
-body.addmeal .card.eating{
+body.addmeal .card.eating, body.editmeal .card.eating{
   opacity: 1;
 }
-body.addmeal .card.chef{
+body.addmeal .card.chef, body.editmeal .card.chef{
   opacity: 1;
 }
-body.addmeal .card.chef .photoFrame{
+body.addmeal .card.chef .photoFrame, body.editmeal .card.chef .photoFrame{
   position: relative;
 }
-body.addmeal .card.chef .photoFrame:after{
+body.addmeal .card.chef .photoFrame:after, body.editmeal .card.chef .photoFrame:after{
   content: " ";
   display: block;
   position: absolute;
@@ -407,45 +407,45 @@ input[type="date"].form-control{
   header nav a span {
     display: none;
   }
-  body.addmeal .card {
+  body.addmeal .card, body.editmeal .card{
     position: relative;
     width: 100%;
     margin: 0.5em 0;
     padding: 10px;
     opacity: 0.5;
   }
-  body.addmeal .card:not(.eating):hover {
+  body.addmeal .card:not(.eating):hover,   body.editmeal .card:not(.eating):hover  {
     opacity: 0.5;
   }
-  body.addmeal .card h1{
+  body.addmeal .card h1, body.editmeal .card h1{
     float: right;
   }
-  body.addmeal .photoFrame {
+  body.addmeal .photoFrame, body.editmeal .photoFrame {
     width: 50%;
     padding: 0;
   }
-  body.addmeal .form-group {
+  body.addmeal .form-group, body.editmeal .form-group {
     display: block;
     width: 100%;
     max-width: 100%;
     margin: 1em 0;
   }
-  body.addmeal .form-group input {
+  body.addmeal .form-group input,  body.editmeal .form-group input  {
     width: 100%;
   }
-  body.addmeal .card.chef {
+  body.addmeal .card.chef,   body.editmeal .card.chef {
     background-image: url(img/chef.png);
     background-size: auto 80%;
     background-position: right bottom;
     background-repeat: no-repeat;
   }
-  body.addmeal .card.chef .photoFrame:after {
+  body.addmeal .card.chef .photoFrame:after, body.editmeal .card.chef .photoFrame:after  {
     display: none;
   }
-  body.addmeal .form-group.submit {
+  body.addmeal .form-group.submit, body.editmeal .form-group.submit  {
     text-align: center;
   }
-  body.addmeal .form-group.submit .btn {
+  body.addmeal .form-group.submit .btn, body.editmeal .form-group.submit .btn {
     width: 100%;
     font-size: 32px;
     padding: 20px;

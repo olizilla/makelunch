@@ -9,9 +9,8 @@ Template.editmeal.events({
       guests: parseInt(tpl.find('.mealGuests').value, 10),
       dish: tpl.find('.mealDish').value
     }
-
-    console.log(meal)
-    Meals.create(meal)
+    
+    Meals.edit(this.meal._id, meal)
     Router.go('meals')
   },
 
