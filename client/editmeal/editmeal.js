@@ -21,5 +21,11 @@ Template.editmeal.events({
     if (card.hasClass('chef')) card.removeClass('chef eating') 
       else if (card.hasClass('eating')) card.addClass('chef')
       else if (!card.hasClass('eating')) card.addClass('eating')
+  },
+  'click .button .delete': function (evt, tpl) {
+    evt.preventDefault()
+    Meals.remove(this.meal._id)
+    Router.go('meals')
   }
+
 })

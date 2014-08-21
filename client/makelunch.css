@@ -442,10 +442,10 @@ input[type="date"].form-control{
   body.addmeal .card.chef .photoFrame:after, body.editmeal .card.chef .photoFrame:after  {
     display: none;
   }
-  body.addmeal .form-group.submit, body.editmeal .form-group.submit  {
+  body.addmeal .form-group.submit, body.editmeal .form-group.submit , body.editmeal .form-group.button {
     text-align: center;
   }
-  body.addmeal .form-group.submit .btn, body.editmeal .form-group.submit .btn {
+  body.addmeal .form-group.submit .btn, body.editmeal .form-group.submit .btn , body.editmeal .form-group.button .btn.delete{
     width: 100%;
     font-size: 32px;
     padding: 20px;

@@ -35,6 +35,10 @@ Meteor.startup(function () {
     update: function (userId, doc) {
       if(!userId) return false
       return true;
+    },
+    remove: function (userId, doc) {
+      if(!userId) return false
+      return true;
     }
   })
 
