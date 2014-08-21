@@ -1,6 +1,7 @@
 MakeLunch = {} // our global for helpers
 
 Meteor.subscribe('eaters')
+Meteor.subscribe('meals')
 
 Meteor.startup(function () {
 
@@ -30,10 +31,10 @@ Meteor.startup(function () {
     this.route('editmeal', {
       path:'/editmeal/:_id',
       data: function () {
-        return Meals.findOne({_id: this.params._id})
-
-          //people: Eaters.find({status:'jail'}),
-        
+        return {
+          meal: Meals.findOne(this.params._id),
+          people: Eaters.find({status:'jail'})
+        }
       }
     })
 

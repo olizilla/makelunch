@@ -1,4 +1,4 @@
-Template.addmeal.events({
+Template.editmeal.events({
   'submit': function (evt, tpl) {
     evt.preventDefault()
 
@@ -11,7 +11,7 @@ Template.addmeal.events({
     }
 
     console.log(meal)
-    Meals.insert(meal)
+    Meals.create(meal)
     Router.go('meals')
   },
 
