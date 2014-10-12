@@ -7,7 +7,7 @@
 </template>
 
 <template name="today">
-  {{date}} - Chef of the day: <span id="chef">{{whoShouldCook.name}}</span>
+  Chef of the day
 </template>
 
 <template name="deck">
@@ -33,10 +33,10 @@
 
 <template name="card">
   <div class="card{{#if eating}} eating{{/if}} {{scoreSummary this}}" data-person-id="{{_id}}">
-    <h1>{{name}} 
+    <h1>{{name}}
       {{#if currentUser}}
-        <a class="btn-editperson" href="/editperson/{{ _id }}"><i class="fa fa-pencil"></i></a> 
-      {{/if}}   
+        <a class="btn-editperson" href="/editperson/{{ _id }}"><i class="fa fa-pencil"></i></a>
+      {{/if}}
       <span class="score">{{ score this }}</span>
     </h1>
     {{> photoFrame this}}
@@ -58,7 +58,7 @@
         {{#if lastCooked}}
         <span title="{{lastCooked}}">{{fromNow lastCooked}}</span>
         {{else}}
-        <span title="Never">Never</span>
+        <span>Never</span>
         {{/if}}
       </li>
     </ul>

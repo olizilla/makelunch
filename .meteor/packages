@@ -5,12 +5,12 @@
 
 standard-app-packages
 accounts-password
-accounts-ui
-iron-router
-moment
-crypto-md5
-select2
-
-mocha-web-velocity
 accounts-twitter
-velocity-html-reporter
+accounts-ui
+iron:router
+mrt:moment
+jparker:crypto-md5
+mike:mocha
+velocity:html-reporter
+london:body-class
+

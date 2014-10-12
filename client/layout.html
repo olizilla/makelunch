@@ -6,11 +6,7 @@
 </head>
 <body>
   <header>
-    <h1>
-      <a href="/" class="logo">
-        <img src="http://jailmake.com/wp-content/themes/jail_2_2/img/jail_header_140_type.png">
-      </a>
-    </h1>
+    <a href="/" class="logo"></a>
     <nav>
       {{#if currentUser }}
       <a href="/addmeal" class="add-meal">
@@ -27,10 +23,10 @@
         <span>Meals past</span>
       </a>
       {{#unless currentUser }}
-      <div class="login-panel">
+      <span class="login-panel">
         <i class="fa fa-twitter"></i>
         {{> loginButtons}}
-      </div>
+      </span>
       {{/unless}}
     </nav>
     <span id="feedback"></span>

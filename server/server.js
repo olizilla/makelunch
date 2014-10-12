@@ -2,8 +2,9 @@ Meteor.publish('eaters', function () {
   return Eaters.find({}, { sort: {name: 1} })
 })
 
-Meteor.publish('meals', function () {
-  return Meals.find({})
+Meteor.publish('meals', function (limit) {
+  limit = limit || 10
+  return Meals.find({}, {limit: limit})
 })
 
 Meteor.startup(function () {

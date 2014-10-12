@@ -42,7 +42,7 @@ Meteor.startup(function () {
       }
     })
 
-    this.route('editperson', { 
+    this.route('editperson', {
       path: '/editperson/:_id',
       data: function() {
         return Eaters.findOne(this.params._id)
@@ -64,20 +64,8 @@ Meteor.startup(function () {
         }
       }
     })
-
-    // Add route to body
-    var routes = Router.routes.map(function(r){return r.name}).join(' ')
-    Deps.autorun(function(){
-      var $body = $('body')
-      $body.removeClass(routes)
-      var currentRoute = Router.current()
-      if (currentRoute && currentRoute.route && currentRoute.route.name){
-        $body.addClass(currentRoute.route.name)
-      }
-    })
-
   })// end router.map
-  
+
   //registerHelpers
   UI.registerHelper('scoreSummary', Eaters.scoreSummary)
 })// end Meteor.startup
@@ -116,7 +104,7 @@ function scoreSort (a, b) {
 
 function whoShouldCook() {
   var eaters = Eaters.find({'status':'jail'}).fetch()
-  
+
   eaters.sort(scoreSort)
 
   return eaters[0]
@@ -131,7 +119,7 @@ MakeLunch.showFeedback = function showFeedback (text) {
   var feedback = $("#feedback")
   feedback.show()
   feedback.text("> ");
-  
+
   (function tickerText (i) {
     setTimeout(function() {
       feedback.text(feedback.text() + text[i])

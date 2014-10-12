@@ -7,33 +7,34 @@
 *, *:before, *:after {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
  }
-
 body {
-  font-family: JAILcopy, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  /* font-family: JAILcopy, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; */
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   background: #EEE;
+  margin-bottom:0;
 }
 header{
   background: rgb(24,49,96);
-  position: relative;
+  margin:-8px -8px 8px;
 }
-header h1{
-  display: inline-block;
-  padding:10px 5px;
-  color: white;
-  margin:0;
-  vertical-align: middle;
-}
-header h1 img {
-  vertical-align: -22px;
+header .logo{
+  display:inline-block;
+  background: url("http://jailmake.com/wp-content/themes/jail_2_2/img/jail_header_140_type.png") no-repeat center center;
+  width: 150px;
+  height: 50px;
+  vertical-align:middle;
 }
 header nav {
   display: inline-block;
   vertical-align: middle;
+  font-weight:200;
+  letter-spacing:2px;
 }
 header nav a {
+  display:inline-block;
   text-decoration: none;
   font-size: 24px;
-  padding: 10px;
+  padding: 10px 30px 10px 0;
   color: white;
 }
 header nav a span {
@@ -53,16 +54,27 @@ header #feedback {
 }
 
 header .login-panel {
-  float: right;
   color: white;
-  margin: 32px;
   font-size: 24px;
 }
+header .login-panel i{
+  margin-right:-4px;
+}
+#login-buttons a {
+  text-decoration:none;
+}
+
 header .login-panel #login-dropdown-list {
   left: -150px;
 }
 header .login-panel .or, header .login-panel .login-password-form {
   display: none;
+}
+h1{
+  text-align:center;
+  width:240px;
+  font-weight:400;
+  letter-spacing:1px;
 }
 #chef {
   color: rgb(24,49,96);
@@ -81,8 +93,10 @@ header .login-panel .or, header .login-panel .login-password-form {
   opacity: 0.5;
 }
 .card h1{
+  width:auto;
+  text-align:left;
   margin: 0;
-  padding:4px 0;
+  padding:0px 0 5px 5px;
   font-size: 1.5em;
   overflow: hidden;
 }
@@ -91,7 +105,7 @@ header .login-panel .or, header .login-panel .login-password-form {
   width:230px;
   height:230px;
   overflow: hidden;
-  margin-bottom: 7px;
+  margin-bottom: 5px;
   vertical-align: middle;
 }
 .photoFrame img{
@@ -128,7 +142,7 @@ table .photoFrame img{
   margin:0;
   font-size: 0.9em;
 }
-.card .stats li{ 
+.card .stats li{
   padding: 4px 4px 2px;
 }
 .card .stats li:nth-child(odd){
@@ -136,7 +150,7 @@ table .photoFrame img{
 }
 .card .stats label{
   padding-right: 12px;
-  min-width: 80px;
+  min-width: 50%;
   display: inline-block;
   text-align: right;
 }
@@ -189,11 +203,12 @@ body.editmeal .form-group.button .btn.delete.verify::after {
 .rye{
   min-height:500px;
   background: url(http://fc05.deviantart.net/fs70/i/2010/059/2/6/Green_Grass_Texture_01_by_goodtextures.jpg);
-  border: dashed 5px #333;
-
-  margin-top:300px;
-  padding: 10px 4px;
+  background-size:cover;
+  border-top: solid 9px #333;
+  margin:300px -8px 0;
+  padding: 0px 8px;
 }
+
 
 /*
 * Homepage add meal mode
@@ -385,7 +400,7 @@ input[type="date"].form-control{
   display: inline-block;
   width:40%;
   margin: 0;
-  max-width: 260px; 
+  max-width: 260px;
 }
 
 .form-group.date {
@@ -455,4 +470,4 @@ input[type="date"].form-control{
     padding: 20px;
     margin: 0;
   }
-} 
+}
