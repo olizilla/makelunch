@@ -12,6 +12,7 @@ body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
   background: #EEE;
   margin-bottom:0;
+  /* background:url("img/osb.jpg") repeat; */
 }
 header{
   background: rgb(24,49,96);
@@ -19,7 +20,7 @@ header{
 }
 header .logo{
   display:inline-block;
-  background: url("http://jailmake.com/wp-content/themes/jail_2_2/img/jail_header_140_type.png") no-repeat center center;
+  background: url("http://jailmake.com/wp-content/themes/jail_2_2/img/jail_header_140_type.png") no-repeat -8px center;
   width: 150px;
   height: 50px;
   vertical-align:middle;
@@ -29,6 +30,7 @@ header nav {
   vertical-align: middle;
   font-weight:200;
   letter-spacing:2px;
+  margin-left: 18px;
 }
 header nav a {
   display:inline-block;
@@ -72,7 +74,7 @@ header .login-panel .or, header .login-panel .login-password-form {
 }
 h1{
   text-align:center;
-  width:240px;
+  width:260px;
   font-weight:400;
   letter-spacing:1px;
 }
@@ -102,8 +104,8 @@ h1{
 }
 .photoFrame {
   display: inline-block;
-  width:230px;
-  height:230px;
+  width:240px;
+  height:240px;
   overflow: hidden;
   margin-bottom: 5px;
   vertical-align: middle;
@@ -154,9 +156,6 @@ table .photoFrame img{
   display: inline-block;
   text-align: right;
 }
-.card .stats span{
-  font-weight: 600;
-}
 .card .score{
   float:right;
 }
@@ -205,7 +204,7 @@ body.editmeal .form-group.button .btn.delete.verify::after {
   background: url(http://fc05.deviantart.net/fs70/i/2010/059/2/6/Green_Grass_Texture_01_by_goodtextures.jpg);
   background-size:cover;
   border-top: solid 9px #333;
-  margin:300px -8px 0;
+  margin:60px -8px 0;
   padding: 0px 8px;
 }
 
@@ -407,7 +406,6 @@ input[type="date"].form-control{
   width: 40%;
 }
 
-
 @media all and (max-width: 1000px) {
   .adding-meal-details .meal-details {
   }
@@ -423,8 +421,17 @@ input[type="date"].form-control{
 }
 
 @media all and (max-width: 768px) {
-  header nav a span {
-    display: none;
+  header .logo{
+    display:none;
+  }
+  .card{
+    width:100%;
+  }
+  .photoFrame{
+    width:100%;
+  }
+  .rye{
+    background-size:auto;
   }
   body.addmeal .card, body.editmeal .card{
     position: relative;
