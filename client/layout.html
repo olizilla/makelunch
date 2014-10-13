@@ -6,7 +6,7 @@
   <header>
     <a href="/" class="logo"></a>
     <nav>
-      {{#unless currentUser }}
+      {{#if currentUser }}
       <a href="/addmeal" class="add-meal">
         <i class="fa fa-cutlery"></i>
         <span>Log a meal</span>
@@ -19,13 +19,13 @@
         <i class="fa fa-th-list"></i>
         <span>Meals past</span>
       </a>
-      {{/unless}}
-      {{#if currentUser }}
+      {{/if}}
+      {{#unless currentUser }}
       <span class="login-panel">
         <i class="fa fa-twitter"></i>
         {{> loginButtons}}
       </span>
-      {{/if}}
+      {{/unless}}
     </nav>
     <span id="feedback"></span>
   </header>
