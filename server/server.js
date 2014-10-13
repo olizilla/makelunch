@@ -4,7 +4,7 @@ Meteor.publish('eaters', function () {
 
 Meteor.publish('meals', function (limit) {
   limit = limit || 10
-  return Meals.find({}, {limit: limit})
+  return Meals.find({}, {sort:[['date', 'desc']], limit: limit})
 })
 
 Meteor.startup(function () {

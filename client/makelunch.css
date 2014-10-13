@@ -104,8 +104,8 @@ h1{
 }
 .photoFrame {
   display: inline-block;
-  width:240px;
-  height:240px;
+  width:232px;
+  height:232px;
   overflow: hidden;
   margin-bottom: 5px;
   vertical-align: middle;
